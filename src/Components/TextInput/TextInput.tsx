@@ -9,10 +9,11 @@ export interface TextInputProps {
   onChange?: (value: string) => void,
   bordered?: boolean,
   placeholder?: string,
-  disabled?: boolean
+  disabled?: boolean,
+  className?: string
 }
 
-const TextInput: React.FunctionComponent<TextInputProps> = ({ label, placeholder, value, onChange, bordered, disabled }) => {
+const TextInput: React.FunctionComponent<TextInputProps> = ({ className, label, placeholder, value, onChange, bordered, disabled }) => {
 
   const inputRef: any = useRef();
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
@@ -59,7 +60,9 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ label, placeholder
     "textinput-filled": (inputValue && inputValue.length > 0)
   });
 
-  const wrapperClassnames: string = classNames("textinput-wrapper", {
+  const wrapperClassnames: string = classNames(
+    className,
+    "textinput-wrapper", {
     "textinput-wrapper-bordered": bordered,
     "textinput-disabled": disabled
   });

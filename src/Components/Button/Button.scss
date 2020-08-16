@@ -3,6 +3,7 @@
 .button-wrapper {
     min-height: $fieldHeight;
     max-height: $fieldHeight;
+    max-width: 500px;
     overflow: hidden;
     text-overflow: ellipsis;
     border-radius: $borderRadius;

@@ -16,12 +16,14 @@ export interface ButtonProps {
   onClick?: () => void,
   hoverUnderlineEffect?: boolean,
   hoverMoveEffect?: boolean,
-  disabled?: boolean
+  disabled?: boolean,
+  className?: string
 }
 
-const Button: React.FunctionComponent<ButtonProps> = ({ label, icon, onClick, buttonType = ButtonType.Primary, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
+const Button: React.FunctionComponent<ButtonProps> = ({ className, label, icon, onClick, buttonType = ButtonType.Primary, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
 
   const wrapperClassNames: string = classNames(
+    className,
     "button-wrapper",
     {
       "primary-button": buttonType === ButtonType.Primary,
