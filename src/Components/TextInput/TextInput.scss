@@ -1,0 +1,113 @@
+@import "./../../Assets/variables";
+
+.textinput-wrapper {
+    position: relative;
+    display: inline-block;
+
+    .textinput-label {
+        position: absolute;
+        left: 20px;
+        top: 22px;
+        z-index: 9001;
+        user-select: none;
+        transition: 200ms ease-in-out;
+        cursor: text;
+        max-width: calc(100% - 40px);
+        max-height: $fontSizeM;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+    }
+
+    .textinput-label-active {
+        font-size: 12px;
+        top: 14px;
+        color: $mainAccentColor;
+    }
+
+    .textinput-label-focus {
+        color: $focusColor !important;
+    }
+
+    input {
+        padding: $paddingS;
+        border-radius: $borderRadius;
+        background-color: $neutralColor;
+        display: inline-block;
+        position: relative;
+        margin: $marginM;
+        border: none;
+        box-shadow: none;
+        box-sizing: unset;
+        font-size: $fontSizeM;
+        font-family: $fontFamily;
+        max-height: #{$fieldHeight + 4px};
+        min-height: #{$fieldHeight + 4px};
+        transition: 200ms ease-in-out;
+        border: 1px solid $neutralColor;
+
+        &::placeholder {
+            visibility: hidden;
+            transition: 100ms all;
+        }
+
+        &.textinput-filled {
+            padding-top: 15px;
+            padding-bottom: 3px;
+        }
+
+        &:focus {
+            outline: none;
+            padding-top: 15px;
+            padding-bottom: 3px;
+            border: 1px solid $focusColor;
+            box-shadow: 0px 0px 4px 0px #3096d2;
+            background-color: white;
+
+            &::placeholder {
+                visibility: visible;
+            }
+        }
+    }
+
+    &.textinput-disabled {
+        & > input {
+            background-color: $neutralColor;
+            cursor: not-allowed;
+        }
+
+        & > .textinput-label {
+            cursor: not-allowed;
+            color: $disabledColor;
+        }
+    }
+}
+
+.textinput-wrapper-bordered {
+
+    .textinput-label {
+        color: $neutralAccentColor;
+    }
+
+    .textinput-label-active {
+        top: 1.75px;
+        left: 14px;
+        background-color: white;
+        padding: 0 7.5px;
+    }
+
+    & > input {
+        background-color: initial;
+        border: 1px solid $neutralColor;
+        padding: $paddingSWithoutBorder;
+
+        &:focus {
+            padding: $paddingSWithoutBorder;
+        }
+
+        &.textinput-filled {
+            padding-top: 9px;
+            padding-bottom: 9px;
+        }
+    }
+}
