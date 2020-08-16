@@ -1,0 +1,107 @@
+@import "./../../Assets/variables.scss";
+
+.button-wrapper {
+    min-height: $fieldHeight;
+    max-height: $fieldHeight;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: $borderRadius;
+    cursor: pointer;
+    display: inline-block;
+    padding: $paddingM;
+    text-align: center;
+    margin: $marginM;
+    transition: 200ms ease-in-out;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: $paddingLeftM;
+        bottom: 5px;
+        width: 0;
+        height: 2px;
+        transition: 200ms ease-in-out;
+    }
+
+    &.primary-button {
+        &:not(.border-button) {
+            color: white;
+            background-color: $mainColor;
+            border: 2px solid $mainColor;
+            &::after {
+                background-color: white;
+            }
+        }
+
+        &.border-button {
+            color: $mainColor;
+            border: 2px solid $mainColor;
+            &::after {
+                background-color: $mainColor;
+            }
+        }
+    }
+
+    &.secondary-button {
+        &:not(.border-button) {
+            color: white;
+            background-color: $secondaryColor;
+            border: 2px solid $secondaryColor;
+            &::after {
+                background-color: white;
+            }
+        }
+
+        &.border-button {
+            color: $secondaryColor;
+            border: 2px solid $secondaryColor;
+            &::after {
+                background-color: $secondaryColor;
+            }
+        }
+    }
+
+    &.cancel-button {
+        &:not(.border-button) {
+            color: white;
+            background-color: $cancelColor;
+            border: 2px solid $cancelColor;
+            &::after {
+                background-color: white;
+            }
+        }
+
+        &.border-button {
+            color: $cancelColor;
+            border: 2px solid $cancelColor;
+            &::after {
+                background-color: $cancelColor;
+            }
+        }
+    }
+
+    &.disabled-button {
+        cursor: not-allowed;
+
+        &:not(.border-button) {
+            color: $disabledTextColor;
+            background-color: $disabledColor;
+            border: 2px solid $disabledColor;
+        }
+
+        &.border-button {
+            color: $disabledColor;
+            border: 2px solid $disabledColor;
+        }
+    }
+
+    &:hover {
+        &.move-effect {
+            margin: 5px 5px 15px 5px;
+        }
+        &.underline-effect::after {
+            width: calc(100% - 60px);
+        }
+    }
+}
