@@ -1,6 +1,9 @@
 import * as React from 'react';
 import "./Button.scss";
 import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import fas from '@fortawesome/fontawesome-free-solid';
+import fontawesome from "@fortawesome/fontawesome";
 
 export enum ButtonType {
   Primary,
@@ -11,7 +14,7 @@ export enum ButtonType {
 
 export interface ButtonProps {
   label: string,
-  icon?: string,
+  icon?: any,
   buttonType?: ButtonType,
   bordered?: boolean,
   onClick?: () => void,
@@ -22,7 +25,15 @@ export interface ButtonProps {
   id?: string
 }
 
+fontawesome.library.add(fas);
+
 const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, icon, onClick, buttonType = ButtonType.Primary, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
+
+  // Check if icon exists in our library, if not, we reset its value
+  // @ts-ignore
+  if(!Object.keys(fontawesome.library.definitions.fas).includes(icon)) {
+      icon = undefined;
+  }
 
   const wrapperClassNames: string = classNames(
     className,
@@ -35,19 +46,24 @@ const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, ic
       "border-button": bordered,
       "underline-effect": hoverUnderlineEffect && !disabled,
       "move-effect": hoverMoveEffect && !disabled,
-      "disabled-button": disabled
+      "disabled-button": disabled,
+      // @ts-ignore
+      "icon-button": icon
     }
   )
 
-    const handleOnClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
-      event.preventDefault();
-      event.stopPropagation();
-      onClick?.();
-    }
+  const handleOnClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
+    event.preventDefault();
+    event.stopPropagation();
+    onClick?.();
+  }
 
   return (
     <div className={wrapperClassNames} id={id} onClick={handleOnClick}>
-      <a>{label}</a>
+      <div className="button-container">
+        {icon && <FontAwesomeIcon icon={icon} />}
+        <a>{label}</a>
+      </div>
     </div>
   );
 }

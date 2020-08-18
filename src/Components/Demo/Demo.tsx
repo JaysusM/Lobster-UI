@@ -10,8 +10,8 @@ export const Demo = () => {
       <div className="row-container">
         <Button label={"Sign Up"} bordered={true} />
         <Button label={"Check Out"} buttonType={ButtonType.Secondary} bordered={true} />
-        <Button label={"Cancel"} buttonType={ButtonType.Cancel} bordered={true} />
-        <Button label={"Confirm"} buttonType={ButtonType.Success} bordered={true} />
+        <Button icon="camera" label={"Cancel"} buttonType={ButtonType.Cancel} bordered={true} />
+        <Button icon="foo" label={"Confirm"} buttonType={ButtonType.Success} bordered={true} />
       </div>
       <div className="row-container">
         <Button label={"Next Step"} />

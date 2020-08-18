@@ -3,9 +3,8 @@
 .button-wrapper {
     min-height: $fieldHeight;
     max-height: $fieldHeight;
-    max-width: 500px;
+    max-width: 400px;
     overflow: hidden;
-    text-overflow: ellipsis;
     border-radius: $borderRadius;
     cursor: pointer;
     display: inline-block;
@@ -15,6 +14,23 @@
     transition: 200ms ease-in-out;
     position: relative;
 
+    & > .button-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        & > svg {
+            padding-right: 10px;
+            padding-bottom: 1px;
+        }
+
+        & > a {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
     &::after {
         content: '';
         position: absolute;
@@ -23,6 +39,14 @@
         width: 0;
         height: 2px;
         transition: 200ms ease-in-out;
+    }
+
+    &:not(.icon-button) {
+        padding: $paddingL;
+
+        &::after {
+            left: $paddingLeftL;
+        }
     }
 
     &.primary-button {
@@ -120,8 +144,17 @@
         &.move-effect {
             margin: 5px 5px 15px 5px;
         }
-        &.underline-effect::after {
-            width: calc(100% - 60px);
+
+        &.icon-button {
+            &.underline-effect::after {
+                width: calc(100% - calc(2 * #{$paddingLeftM}));
+            }
+        }
+
+        &:not(.icon-button) {
+            &.underline-effect::after {
+                width: calc(100% - calc(2 * #{$paddingLeftL}));
+            }
         }
     }
 }

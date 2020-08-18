@@ -5,6 +5,10 @@
   "description": "A simple awesome React's components library",
   "main": "index.tsx",
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@types/classnames": "^2.2.10",
     "classnames": "^2.2.6",
     "node-sass": "^4.14.1",
