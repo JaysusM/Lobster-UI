@@ -17,10 +17,11 @@ export interface TextInputProps {
   disabled?: boolean,
   className?: string,
   id?: string,
-  error?: string
+  errorMessage?: string,
+  success?: boolean
 }
 
-const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, label, error, placeholder, value, onChange, bordered, disabled }) => {
+const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, label, errorMessage, success, placeholder, value, onChange, bordered, disabled }) => {
 
   const inputRef: any = useRef();
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
@@ -78,13 +79,18 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, lab
     "textinput-wrapper", {
     "textinput-wrapper-bordered": bordered,
     "textinput-disabled": disabled,
-    "textinput-error": error
+    "textinput-error": errorMessage,
+    "textinput-success": success && !errorMessage
   });
 
   const errorIconClassnames: string = classNames(
     "error-information", {
     "error-information-focus": isInputFocused
   });
+
+  const successIconClassnames: string = classNames("success-icon", {
+  "success-information-focus": isInputFocused
+});
 
   const handleLabelClick = () => {
     if (!disabled) {
@@ -107,10 +113,11 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, lab
   return (
     <div className={wrapperClassnames} id={id}>
       {label && <label onClick={handleLabelClick} className={labelClassnames}>{label}</label>}
-      {error && <>
+      {errorMessage && <>
         <FontAwesomeIcon icon="info-circle" className={errorIconClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut}/>
-        <a className={errorTextClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut}>{error}</a>
+        <a className={errorTextClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut}>{errorMessage}</a>
       </>}
+      {success && !errorMessage && <FontAwesomeIcon icon="check-circle" className={successIconClassnames}/>}
       <input ref={inputRef} className={inputClassnames} type="text" placeholder={placeholder} value={value} onChange={handleOnChange} onFocus={handleInputFocus} onBlur={handleInputFocusLose} />
     </div>
   );

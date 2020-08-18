@@ -1,0 +1,39 @@
+@import "../../Assets/variables.scss";
+
+.checkbox-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+
+    & > .checkbox-container {
+        width: 20px;
+        height: 20px;
+        background-color: $neutralColor;
+        border: 2px solid $neutralColor;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: $marginXL;
+        transition: 200ms ease-in-out;
+        color: white;
+        margin-left: 10px;
+
+        & > .neutral-line {
+            width: 16px;
+            height: 3px;
+            background-color: white;
+        }
+
+        &.checkbox-neutral {
+            background-color: $neutralAccentColor;
+            border: 2px solid $neutralAccentColor;
+        }
+
+        &.checkbox-marked {
+            background-color: $mainColor;
+            border: 2px solid $mainColor;
+        }
+    }
+}

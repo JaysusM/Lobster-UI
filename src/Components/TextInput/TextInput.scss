@@ -67,6 +67,13 @@
         color: $focusColor !important;
     }
 
+    &.textinput-success {
+        & > input {
+            border: 1px solid $successColor;
+            box-shadow: 0px 0px 4px 0px $successColor;
+        }
+    }
+
     input {
         padding: $paddingS;
         border-radius: $borderRadius;
@@ -132,8 +139,7 @@
         }
     }
 
-    & > .error-information {
-        color: $errorColor;
+    & > .error-information, & > .success-icon {
         position: absolute;
         right: 6px;
         border-radius: 5px;
@@ -143,7 +149,16 @@
         background-color: $neutralColor;
         transition: 200ms ease-in-out;
 
-        &.error-information-focus {
+        &.error-information {
+            color: $errorColor;
+        }
+
+        &.success-icon {
+            color: $successColor;
+        }
+
+        &.success-information-focus, &.error-information-focus {
+            opacity: 0;
             background-color: white;
         }
     }
@@ -177,14 +192,7 @@
         }
     }
 
-    & > .error-information {
-        color: $errorColor;
-        position: absolute;
-        right: 6px;
-        border-radius: 5px;
-        top: 11px;
-        z-index: 1;
-        padding: 13.5px;
+    & > .error-information, & > .success-icon {
         background-color: white;
     }
 }

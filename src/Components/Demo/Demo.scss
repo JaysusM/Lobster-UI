@@ -1,7 +1,7 @@
 @import "./../../Assets/variables";
 
 body {
-    margin: 0 30px;
+    margin: 0 30px 30px 30px;
     padding: 0;
     font-family: sans-serif;
 }
@@ -9,4 +9,5 @@ body {
 .row-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
