@@ -5,7 +5,8 @@ import classNames from "classnames";
 export enum ButtonType {
   Primary,
   Secondary,
-  Cancel
+  Cancel,
+  Success
 }
 
 export interface ButtonProps {
@@ -17,10 +18,11 @@ export interface ButtonProps {
   hoverUnderlineEffect?: boolean,
   hoverMoveEffect?: boolean,
   disabled?: boolean,
-  className?: string
+  className?: string,
+  id?: string
 }
 
-const Button: React.FunctionComponent<ButtonProps> = ({ className, label, icon, onClick, buttonType = ButtonType.Primary, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
+const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, icon, onClick, buttonType = ButtonType.Primary, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
 
   const wrapperClassNames: string = classNames(
     className,
@@ -29,6 +31,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({ className, label, icon, 
       "primary-button": buttonType === ButtonType.Primary,
       "secondary-button": buttonType === ButtonType.Secondary,
       "cancel-button": buttonType === ButtonType.Cancel,
+      "success-button": buttonType === ButtonType.Success,
       "border-button": bordered,
       "underline-effect": hoverUnderlineEffect && !disabled,
       "move-effect": hoverMoveEffect && !disabled,
@@ -43,7 +46,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({ className, label, icon, 
     }
 
   return (
-    <div className={wrapperClassNames} onClick={handleOnClick}>
+    <div className={wrapperClassNames} id={id} onClick={handleOnClick}>
       <a>{label}</a>
     </div>
   );

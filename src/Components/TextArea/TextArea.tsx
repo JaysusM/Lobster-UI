@@ -9,10 +9,11 @@ export interface TextInputProps {
     disabled?: boolean,
     rows?: number,
     cols?: number,
-    className?: string
+    className?: string,
+    id?: string
 }
 
-const TextArea: React.FunctionComponent<TextInputProps> = ({ className, value, onChange, bordered, disabled, cols, rows }) => {
+const TextArea: React.FunctionComponent<TextInputProps> = ({ id, className, value, onChange, bordered, disabled, cols, rows }) => {
 
     const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         event.stopPropagation();
@@ -37,7 +38,7 @@ const TextArea: React.FunctionComponent<TextInputProps> = ({ className, value, o
     });
 
     return (
-        <div className={wrapperClassnames}>
+        <div className={wrapperClassnames} id={id}>
             <textarea value={value} onChange={handleOnChange} onFocus={handleFocus} rows={rows} cols={cols} />
         </div>
     );

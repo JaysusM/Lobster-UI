@@ -82,6 +82,25 @@
         }
     }
 
+    &.success-button {
+        &:not(.border-button) {
+            color: white;
+            background-color: $successColor;
+            border: 2px solid $successColor;
+            &::after {
+                background-color: white;
+            }
+        }
+
+        &.border-button {
+            color: $successColor;
+            border: 2px solid $successColor;
+            &::after {
+                background-color: $successColor;
+            }
+        }
+    }
+
     &.disabled-button {
         cursor: not-allowed;
 
