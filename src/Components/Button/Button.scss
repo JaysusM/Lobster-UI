@@ -24,6 +24,14 @@
             padding-bottom: 1px;
         }
 
+        &.icon-end {
+            & > svg {
+                padding-right: initial;
+                padding-left: 10px;
+            }
+            flex-direction: row-reverse;
+        }
+
         & > a {
             white-space: nowrap;
             text-overflow: ellipsis;

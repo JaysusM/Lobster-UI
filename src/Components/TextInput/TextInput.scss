@@ -4,6 +4,44 @@
     position: relative;
     display: inline-block;
 
+    .textinput-errortext {
+        display: none;
+        color: black;
+
+        &.textinput-errortext-show {
+            display: block;
+            position: absolute;
+            z-index: 90001;
+            top: 45px;
+            right: 3px;
+            background-color: white;
+            border: 1px solid #b1b1b1;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.19);
+
+            &:after {
+                content: '';
+                border: 7px solid transparent;
+                border-bottom: 7px solid white;
+                z-index: 90002;
+                top: -13px;
+                position: absolute;
+                right: 16px;
+                font-size: calc(#{$fontSizeM} - 1px);
+            }
+            
+            &:before {
+                content: '';
+                border: 7px solid transparent;
+                border-bottom: 7px solid #b1b1b1;
+                top: -14.5px;
+                position: absolute;
+                right: 16px;
+            }
+        }
+    }
+
     .textinput-label {
         position: absolute;
         left: 20px;
@@ -81,6 +119,34 @@
             color: $disabledColor;
         }
     }
+
+    &.textinput-error {
+
+        & > .textinput-label-active {
+            color: $errorColor !important;
+        }
+
+        & > input {
+            border: 1px solid $errorColor;
+            box-shadow: 0px 0px 4px 0px $errorColor;
+        }
+    }
+
+    & > .error-information {
+        color: $errorColor;
+        position: absolute;
+        right: 6px;
+        border-radius: 5px;
+        top: 11px;
+        z-index: 1;
+        padding: 13.5px;
+        background-color: $neutralColor;
+        transition: 200ms ease-in-out;
+
+        &.error-information-focus {
+            background-color: white;
+        }
+    }
 }
 
 .textinput-wrapper-bordered {
@@ -109,5 +175,16 @@
             padding-top: 9px;
             padding-bottom: 9px;
         }
+    }
+
+    & > .error-information {
+        color: $errorColor;
+        position: absolute;
+        right: 6px;
+        border-radius: 5px;
+        top: 11px;
+        z-index: 1;
+        padding: 13.5px;
+        background-color: white;
     }
 }

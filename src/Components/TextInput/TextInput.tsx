@@ -2,6 +2,11 @@ import * as React from 'react';
 import "./TextInput.scss";
 import { useState, useRef } from 'react';
 import classNames from 'classnames';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import fas from '@fortawesome/fontawesome-free-solid';
+import fontawesome from "@fortawesome/fontawesome";
+
+fontawesome.library.add(fas);
 
 export interface TextInputProps {
   label: string,
@@ -11,13 +16,15 @@ export interface TextInputProps {
   placeholder?: string,
   disabled?: boolean,
   className?: string,
-  id?: string
+  id?: string,
+  error?: string
 }
 
-const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, label, placeholder, value, onChange, bordered, disabled }) => {
+const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, label, error, placeholder, value, onChange, bordered, disabled }) => {
 
   const inputRef: any = useRef();
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
+  const [isErrorInformationHovered, setIsErrorInformationHovered] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string | undefined>(value);
 
   const removeFocusInInput = () => {
@@ -57,6 +64,10 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, lab
     "textinput-label-active": isInputFocused || (inputValue && inputValue.length > 0)
   });
 
+  const errorTextClassnames: string = classNames("textinput-errortext", {
+    "textinput-errortext-show": isErrorInformationHovered
+  });
+
   const inputClassnames: string = classNames({
     "textinput-filled": (inputValue && inputValue.length > 0)
   });
@@ -66,7 +77,13 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, lab
     "lobster-component",
     "textinput-wrapper", {
     "textinput-wrapper-bordered": bordered,
-    "textinput-disabled": disabled
+    "textinput-disabled": disabled,
+    "textinput-error": error
+  });
+
+  const errorIconClassnames: string = classNames(
+    "error-information", {
+    "error-information-focus": isInputFocused
   });
 
   const handleLabelClick = () => {
@@ -75,9 +92,25 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, lab
     }
   };
 
+  const handleInformationMouseOver = (event: React.MouseEvent<SVGSVGElement | HTMLAnchorElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
+    setIsErrorInformationHovered(true);
+  };
+
+  const handleInformationMouseOut = (event: React.MouseEvent<SVGSVGElement | HTMLAnchorElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
+    setIsErrorInformationHovered(false);
+  };
+
   return (
     <div className={wrapperClassnames} id={id}>
       {label && <label onClick={handleLabelClick} className={labelClassnames}>{label}</label>}
+      {error && <>
+        <FontAwesomeIcon icon="info-circle" className={errorIconClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut}/>
+        <a className={errorTextClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut}>{error}</a>
+      </>}
       <input ref={inputRef} className={inputClassnames} type="text" placeholder={placeholder} value={value} onChange={handleOnChange} onFocus={handleInputFocus} onBlur={handleInputFocusLose} />
     </div>
   );

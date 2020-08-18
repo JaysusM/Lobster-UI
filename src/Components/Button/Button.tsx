@@ -5,12 +5,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import fas from '@fortawesome/fontawesome-free-solid';
 import fontawesome from "@fortawesome/fontawesome";
 
+fontawesome.library.add(fas);
+
 export enum ButtonType {
   Primary,
   Secondary,
   Cancel,
   Success,
   Simple
+}
+
+export enum IconAlignment {
+  Start,
+  End
 }
 
 export interface ButtonProps {
@@ -23,12 +30,11 @@ export interface ButtonProps {
   hoverMoveEffect?: boolean,
   disabled?: boolean,
   className?: string,
-  id?: string
+  id?: string,
+  iconAlignment?: IconAlignment
 }
 
-fontawesome.library.add(fas);
-
-const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, icon, onClick, buttonType = ButtonType.Primary, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
+const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, icon, iconAlignment, onClick, buttonType = ButtonType.Primary, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
 
   // Check if icon exists in our library, if not, we reset its value
   // @ts-ignore
@@ -54,6 +60,14 @@ const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, ic
     }
   )
 
+  const containerClassNames: string = classNames(
+    "button-container",
+    {
+      "icon-start": icon && ((iconAlignment === IconAlignment.Start) || !iconAlignment),
+      "icon-end": icon && iconAlignment === IconAlignment.End
+    }
+  )
+
   const handleOnClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
     event.preventDefault();
     event.stopPropagation();
@@ -62,7 +76,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, ic
 
   return (
     <div className={wrapperClassNames} id={id} onClick={handleOnClick}>
-      <div className="button-container">
+      <div className={containerClassNames}>
         {icon && <FontAwesomeIcon icon={icon} />}
         <a>{label}</a>
       </div>

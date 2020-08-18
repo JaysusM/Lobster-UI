@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button, { ButtonType } from '../Button/Button';
+import Button, { ButtonType, IconAlignment } from '../Button/Button';
 import "./Demo.scss";
 import TextInput from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
@@ -28,14 +28,17 @@ export const Demo = () => {
       <h5>With icon. Without movement effect. Without underline effect.</h5>
       <div className="row-container">
         <Button icon="camera" label={"Icon"} buttonType={ButtonType.Primary}/>
+        <Button icon="bomb" label={"Icon"} buttonType={ButtonType.Primary} iconAlignment={IconAlignment.End}/>
         <Button label={"No movement"} buttonType={ButtonType.Primary} hoverMoveEffect={false}/>
         <Button label={"No underline"} buttonType={ButtonType.Primary} hoverUnderlineEffect={false}/>
       </div>
       <h3>Input</h3>
-      <h5>Normal. Bordered.</h5>
+      <h5>Normal. Bordered. Error.</h5>
       <div className="row-container">
         <TextInput label={"First name"} placeholder={"This is a placeholder"} />
         <TextInput label={"Last name"} bordered={true} placeholder={"This is a placeholder"} />
+        <TextInput label={"Error"} error={"This is not an error :)"} />
+        <TextInput label={"Error"} bordered={true} error={"This is an error :("} />
       </div>
       <h3>Text Area</h3>
       <h5>Normal. Bordered.</h5>
