@@ -32,6 +32,7 @@ const TextArea: React.FunctionComponent<TextInputProps> = ({ id, className, valu
 
     const wrapperClassnames: string = classNames(
         className,
+        "lobster-component",
         "textarea-wrapper", {
         "textarea-wrapper-bordered": bordered,
         "textarea-disabled": disabled

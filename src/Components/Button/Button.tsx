@@ -9,7 +9,8 @@ export enum ButtonType {
   Primary,
   Secondary,
   Cancel,
-  Success
+  Success,
+  Simple
 }
 
 export interface ButtonProps {
@@ -37,17 +38,18 @@ const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, ic
 
   const wrapperClassNames: string = classNames(
     className,
+    "lobster-component",
     "button-wrapper",
     {
       "primary-button": buttonType === ButtonType.Primary,
       "secondary-button": buttonType === ButtonType.Secondary,
       "cancel-button": buttonType === ButtonType.Cancel,
       "success-button": buttonType === ButtonType.Success,
+      "simple-button": buttonType === ButtonType.Simple,
       "border-button": bordered,
       "underline-effect": hoverUnderlineEffect && !disabled,
       "move-effect": hoverMoveEffect && !disabled,
       "disabled-button": disabled,
-      // @ts-ignore
       "icon-button": icon
     }
   )

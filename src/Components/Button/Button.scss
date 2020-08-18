@@ -49,6 +49,13 @@
         }
     }
 
+    &.simple-button {
+        color: $mainColor;
+        &::after {
+            background-color: $mainColor;
+        }
+    }
+
     &.primary-button {
         &:not(.border-button) {
             color: white;

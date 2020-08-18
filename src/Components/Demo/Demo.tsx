@@ -7,21 +7,39 @@ import TextArea from '../TextArea/TextArea';
 export const Demo = () => {
   return (
     <>
+      <h1>Button Component</h1>
+      <h3>Normal</h3>
       <div className="row-container">
-        <Button label={"Sign Up"} bordered={true} />
-        <Button label={"Check Out"} buttonType={ButtonType.Secondary} bordered={true} />
-        <Button icon="camera" label={"Cancel"} buttonType={ButtonType.Cancel} bordered={true} />
-        <Button icon="foo" label={"Confirm"} buttonType={ButtonType.Success} bordered={true} />
+        <Button label={"Simple"} buttonType={ButtonType.Simple} />
+        <Button label={"Primary"} buttonType={ButtonType.Primary} />
+        <Button label={"Secondary"} buttonType={ButtonType.Secondary} />
+        <Button label={"Cancel"} buttonType={ButtonType.Cancel} />
+        <Button label={"Success"} buttonType={ButtonType.Success} />
       </div>
+      <h3>Bordered</h3>
       <div className="row-container">
-        <Button label={"Next Step"} />
-        <Button label={"Download"} buttonType={ButtonType.Secondary} />
-        <Button label={"CancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancelCancel"} buttonType={ButtonType.Cancel} />
-        <Button label={"Confirm"} buttonType={ButtonType.Success} id={"button-id"}/>
+        <Button label={"BSimple"} buttonType={ButtonType.Simple} bordered={true}/>
+        <Button label={"BPrimary"} buttonType={ButtonType.Primary} bordered={true}/>
+        <Button label={"BSecondary"} buttonType={ButtonType.Secondary} bordered={true}/>
+        <Button label={"BCancel"} buttonType={ButtonType.Cancel} bordered={true}/>
+        <Button label={"BSuccess"} buttonType={ButtonType.Success} bordered={true}/>
       </div>
+      <h3>Special</h3>
+      <h5>With icon. Without movement effect. Without underline effect.</h5>
+      <div className="row-container">
+        <Button icon="camera" label={"Icon"} buttonType={ButtonType.Primary}/>
+        <Button label={"No movement"} buttonType={ButtonType.Primary} hoverMoveEffect={false}/>
+        <Button label={"No underline"} buttonType={ButtonType.Primary} hoverUnderlineEffect={false}/>
+      </div>
+      <h3>Input</h3>
+      <h5>Normal. Bordered.</h5>
       <div className="row-container">
         <TextInput label={"First name"} placeholder={"This is a placeholder"} />
-        <TextInput label={"Last nameLast nameLast nameLast nameLast nameLast nameLast nameLast nameLast nameLast nameLast name"} bordered={true} placeholder={"This is a placeholder"} />
+        <TextInput label={"Last name"} bordered={true} placeholder={"This is a placeholder"} />
+      </div>
+      <h3>Text Area</h3>
+      <h5>Normal. Bordered.</h5>
+      <div className="row-container">
         <TextArea value={"Lorem Ipsum"}/>
         <TextArea bordered={true} />
       </div>

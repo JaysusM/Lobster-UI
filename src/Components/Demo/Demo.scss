@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @import "./../../Assets/variables";
 
 body {
-    margin: 0;
+    margin: 0 30px;
     padding: 0;
-    font-family: $fontFamily, sans-serif;
-    font-size: $fontSizeM;
+    font-family: sans-serif;
 }
 
 .row-container {

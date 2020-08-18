@@ -63,6 +63,7 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, lab
 
   const wrapperClassnames: string = classNames(
     className,
+    "lobster-component",
     "textinput-wrapper", {
     "textinput-wrapper-bordered": bordered,
     "textinput-disabled": disabled
