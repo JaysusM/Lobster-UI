@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Button, { ButtonType, IconAlignment } from '../Button/Button';
 import "./Demo.scss";
-import TextInput from '../TextInput/TextInput';
+import TextInput, { TextInputType } from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
 import { Checkbox } from '../Checkbox/Checkbox';
 
@@ -35,7 +35,7 @@ export const Demo = () => {
         <Button disabled={true} label={"Disabled"} buttonType={ButtonType.Primary} />
       </div>
       <h1>Input Component</h1>
-      <h5>Normal. Bordered. Error. Disabled. Success</h5>
+      <h5>Normal. Bordered. Error. Disabled. Success. Password</h5>
       <div className="row-container">
         <TextInput label={"First name"} placeholder={"This is a placeholder"} />
         <TextInput label={"Last name"} bordered={true} placeholder={"This is a placeholder"} />
@@ -43,6 +43,7 @@ export const Demo = () => {
         <TextInput label={"Error"} bordered={true} errorMessage={"This is an error :("} />
         <TextInput label={"Disabled"} bordered={true} disabled={true} />
         <TextInput label={"Success"} success={true} />
+        <TextInput label={"Password"} type={TextInputType.Password} bordered={true}/>
       </div>
       <h1>TextArea Component</h1>
       <h5>Normal. Bordered.</h5>

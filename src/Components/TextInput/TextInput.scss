@@ -1,6 +1,6 @@
 @import "./../../Assets/variables";
 
-.textinput-wrapper {
+.lobster-component.textinput-wrapper {
     position: relative;
     display: inline-block;
 
@@ -139,7 +139,7 @@
         }
     }
 
-    & > .error-information, & > .success-icon {
+    & > .error-information, & > .success-icon, & > .lock-icon {
         position: absolute;
         right: 6px;
         border-radius: 5px;
@@ -148,6 +148,7 @@
         padding: 13.5px;
         background-color: $neutralColor;
         transition: 200ms ease-in-out;
+        color: black;
 
         &.error-information {
             color: $errorColor;
@@ -157,6 +158,10 @@
             color: $successColor;
         }
 
+        &.lock-icon-focus {
+            background-color: white;
+        }
+
         &.success-information-focus, &.error-information-focus {
             opacity: 0;
             background-color: white;
@@ -164,7 +169,7 @@
     }
 }
 
-.textinput-wrapper-bordered {
+.lobster-component.textinput-wrapper-bordered {
 
     .textinput-label {
         color: $neutralAccentColor;
@@ -192,7 +197,7 @@
         }
     }
 
-    & > .error-information, & > .success-icon {
+    & > .error-information, & > .success-icon, & > .lock-icon {
         background-color: white;
     }
 }

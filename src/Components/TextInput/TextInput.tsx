@@ -8,6 +8,11 @@ import fontawesome from "@fortawesome/fontawesome";
 
 fontawesome.library.add(fas);
 
+export enum TextInputType {
+  Password =  "password",
+  Text = "text"
+}
+
 export interface TextInputProps {
   label: string,
   value?: string,
@@ -18,15 +23,17 @@ export interface TextInputProps {
   className?: string,
   id?: string,
   errorMessage?: string,
-  success?: boolean
+  success?: boolean,
+  type?: TextInputType
 }
 
-const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, label, errorMessage, success, placeholder, value, onChange, bordered, disabled }) => {
+const TextInput: React.FunctionComponent<TextInputProps> = ({ type = TextInputType.Text, id, className, label, errorMessage, success, placeholder, value, onChange, bordered, disabled }) => {
 
   const inputRef: any = useRef();
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
   const [isErrorInformationHovered, setIsErrorInformationHovered] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string | undefined>(value);
+  const [isLockOpen, setIsLockOpen] = useState<boolean>(false);
 
   const removeFocusInInput = () => {
     inputRef?.current?.blur();
@@ -89,8 +96,12 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, lab
   });
 
   const successIconClassnames: string = classNames("success-icon", {
-  "success-information-focus": isInputFocused
-});
+    "success-information-focus": isInputFocused
+  });
+
+  const lockIconClassnames: string = classNames("lock-icon", {
+    "lock-icon-focus": isInputFocused
+  });
 
   const handleLabelClick = () => {
     if (!disabled) {
@@ -110,6 +121,21 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, lab
     setIsErrorInformationHovered(false);
   };
 
+  const PasswordShowIcon = () => {
+    const handlePasswordIconClick = (event: React.MouseEvent<SVGSVGElement>) => {
+        event.stopPropagation();
+        event.preventDefault();
+        setIsLockOpen(!isLockOpen);
+    }
+    const iconString: "lock-open" | "lock" = (isLockOpen) ? "lock-open" : "lock";
+    return type === TextInputType.Password && !errorMessage && <FontAwesomeIcon icon={iconString} className={lockIconClassnames} onClick={handlePasswordIconClick}/>
+  }
+
+  const InputField = () => {
+    const fieldInputType: TextInputType = (type === TextInputType.Password && isLockOpen) ? TextInputType.Text : type;
+    return <input ref={inputRef} className={inputClassnames} type={fieldInputType} placeholder={placeholder} value={value} onChange={handleOnChange} onFocus={handleInputFocus} onBlur={handleInputFocusLose} />
+  }
+
   return (
     <div className={wrapperClassnames} id={id}>
       {label && <label onClick={handleLabelClick} className={labelClassnames}>{label}</label>}
@@ -118,7 +144,8 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ id, className, lab
         <a className={errorTextClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut}>{errorMessage}</a>
       </>}
       {success && !errorMessage && <FontAwesomeIcon icon="check-circle" className={successIconClassnames}/>}
-      <input ref={inputRef} className={inputClassnames} type="text" placeholder={placeholder} value={value} onChange={handleOnChange} onFocus={handleInputFocus} onBlur={handleInputFocusLose} />
+      {PasswordShowIcon()}
+      {InputField()}
     </div>
   );
 }

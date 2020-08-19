@@ -1,11 +1,10 @@
 @import "../../Assets/variables.scss";
 
-.checkbox-wrapper {
+.lobster-component.checkbox-wrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
     cursor: pointer;
-
     & > .checkbox-container {
         width: 20px;
         height: 20px;
