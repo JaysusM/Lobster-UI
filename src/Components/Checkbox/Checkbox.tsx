@@ -23,7 +23,7 @@ export interface CheckboxProps {
     isTristate?: boolean
 }
 
-export const Checkbox: React.FunctionComponent<CheckboxProps> = ({ label, id, className, isTristate, value, onChange }) => {
+const Checkbox: React.FunctionComponent<CheckboxProps> = ({ label, id, className, isTristate, value, onChange }) => {
 
     const initialState: boolean | TriState = (isTristate) ? (value ?? TriState.Unmarked) : (value ?? false);
 
@@ -76,3 +76,5 @@ export const Checkbox: React.FunctionComponent<CheckboxProps> = ({ label, id, cl
         </div>
     );
 }
+
+export default Checkbox;

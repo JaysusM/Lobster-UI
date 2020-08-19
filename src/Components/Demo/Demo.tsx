@@ -3,7 +3,8 @@ import Button, { ButtonType, IconAlignment } from '../Button/Button';
 import "./Demo.scss";
 import TextInput, { TextInputType } from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
-import { Checkbox } from '../Checkbox/Checkbox';
+import Checkbox from '../Checkbox/Checkbox';
+import Loader, { LoaderColor, LoaderType } from '../Loader/Loader';
 
 export const Demo = () => {
   return (
@@ -56,6 +57,17 @@ export const Demo = () => {
       <div className="row-container">
         <Checkbox label={"Normal Checkbox:"} />
         <Checkbox label={"TriState Checkbox:"} isTristate={true} />
+      </div>
+      <h1>Loader Component</h1>
+      <h5>Circle. Triple Ball. Custom Image. Progress Line</h5>
+      <div className="row-container">
+        <Loader type={LoaderType.Circle} />
+        <Loader color={LoaderColor.Primary} type={LoaderType.TripleBall}/>
+        <Loader type={LoaderType.CustomImage} imageUrl={"https://image.flaticon.com/icons/png/512/146/146687.png"}/>
+        <br/>
+        <Loader type={LoaderType.ProgressLine}/>
+        <br/>
+        <Loader type={LoaderType.ProgressLine} color={LoaderColor.Secondary} />
       </div>
     </>
   );
