@@ -5,6 +5,7 @@ import TextInput, { TextInputType } from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
 import Checkbox from '../Checkbox/Checkbox';
 import Loader, { LoaderColor, LoaderType } from '../Loader/Loader';
+import Skeleton, { SkeletonType } from '../Skeleton/Skeleton';
 
 export const Demo = () => {
   return (
@@ -68,6 +69,19 @@ export const Demo = () => {
         <Loader type={LoaderType.ProgressLine}/>
         <br/>
         <Loader type={LoaderType.ProgressLine} color={LoaderColor.Secondary} />
+      </div>
+      <h1>Skeleton Component</h1>
+      <h5>Circle. Text. Custom.</h5>
+      <div className="column-container">
+        <div className="row-container">
+          <Skeleton type={SkeletonType.Circle} radius={50} />
+          <div style={{width: "15px"}} />
+          <div className="expanded-center">
+            <Skeleton type={SkeletonType.Text} width={200} />
+          </div>
+        </div>
+        <br/>
+        <Skeleton type={SkeletonType.Custom} width={265} height={200} />
       </div>
     </>
   );

@@ -11,3 +11,17 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.expanded-center {
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.column-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}

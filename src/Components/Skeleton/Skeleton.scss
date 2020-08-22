@@ -1,0 +1,30 @@
+@import "../../Assets/variables.scss";
+
+.lobster-component.skeleton-component {
+    background-color: $neutralColor;
+    
+    @keyframes skeletonEffect {
+        from {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.3;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    animation: 1.5s skeletonEffect linear infinite;
+
+    &.text-skeleton {
+        width: 100%;
+        height: $fontSizeM;
+    }
+
+    &.circle-skeleton {
+        border-radius: 100%;
+    }
+}
