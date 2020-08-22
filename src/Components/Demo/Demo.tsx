@@ -71,10 +71,10 @@ export const Demo = () => {
         <Loader type={LoaderType.ProgressLine} color={LoaderColor.Secondary} />
       </div>
       <h1>Skeleton Component</h1>
-      <h5>Circle. Text. Custom.</h5>
+      <h5>Circular. Text. Custom.</h5>
       <div className="column-container">
         <div className="row-container">
-          <Skeleton type={SkeletonType.Circle} radius={50} />
+          <Skeleton type={SkeletonType.Circular} height={50} width={50} />
           <div style={{width: "15px"}} />
           <div className="expanded-center">
             <Skeleton type={SkeletonType.Text} width={200} />

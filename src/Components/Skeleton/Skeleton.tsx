@@ -4,7 +4,7 @@ import "./Skeleton.scss";
 
 export enum SkeletonType {
     Text,
-    Circle,
+    Circular,
     Custom
 }
 
@@ -14,17 +14,12 @@ export interface SkeletonProps {
     type?: SkeletonType,
     width?: number,
     height?: number
-    radius?: number
 }
 
-const Skeleton: React.FunctionComponent<SkeletonProps> = ({ id, className, type = SkeletonType.Text, width, height, radius }) => {
+const Skeleton: React.FunctionComponent<SkeletonProps> = ({ id, className, type = SkeletonType.Text, width, height }) => {
 
-    if ((!height || !width) && type === SkeletonType.Custom) {
-        throw new Error("Custom Skeleton needs height and width attributes. Default values for height: fontSize, width: 100%");
-    }
-
-    if (!radius && type === SkeletonType.Circle) {
-        throw new Error("Circle Skeleton needs radius attribute.");
+    if ((!height || !width) && [SkeletonType.Custom, SkeletonType.Circular].includes(type)) {
+        throw new Error("Custom and Circular Skeleton needs height and width attributes. Default values for height: fontSize, width: 100%");
     }
 
     const containerClassname: string = classNames(
@@ -32,17 +27,17 @@ const Skeleton: React.FunctionComponent<SkeletonProps> = ({ id, className, type 
         "skeleton-component", {
         "text-skeleton": type === SkeletonType.Text,
         "custom-skeleton": type === SkeletonType.Custom,
-        "circle-skeleton": type === SkeletonType.Circle
+        "circular-skeleton": type === SkeletonType.Circular
     }
     )
 
     let containerStyles: React.CSSProperties = {};
 
     switch (type) {
-        case SkeletonType.Circle:
+        case SkeletonType.Circular:
             containerStyles = {
-                height: radius + "px",
-                width: radius + "px"
+                height: height + "px",
+                width: width + "px"
             };
             break;
         case SkeletonType.Custom:

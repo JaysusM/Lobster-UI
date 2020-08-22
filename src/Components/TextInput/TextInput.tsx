@@ -9,7 +9,7 @@ import fontawesome from "@fortawesome/fontawesome";
 fontawesome.library.add(fas);
 
 export enum TextInputType {
-  Password =  "password",
+  Password = "password",
   Text = "text"
 }
 
@@ -87,7 +87,8 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ type = TextInputTy
     "textinput-wrapper-bordered": bordered,
     "textinput-disabled": disabled,
     "textinput-error": errorMessage,
-    "textinput-success": success && !errorMessage
+    "textinput-success": success && !errorMessage,
+    "textinput-password": type === TextInputType.Password
   });
 
   const errorIconClassnames: string = classNames(
@@ -112,7 +113,9 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ type = TextInputTy
   const handleInformationMouseOver = (event: React.MouseEvent<SVGSVGElement | HTMLAnchorElement>) => {
     event.stopPropagation();
     event.preventDefault();
-    setIsErrorInformationHovered(true);
+    if (!isInputFocused) {
+      setIsErrorInformationHovered(true);
+    }
   };
 
   const handleInformationMouseOut = (event: React.MouseEvent<SVGSVGElement | HTMLAnchorElement>) => {
@@ -123,12 +126,12 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ type = TextInputTy
 
   const PasswordShowIcon = () => {
     const handlePasswordIconClick = (event: React.MouseEvent<SVGSVGElement>) => {
-        event.stopPropagation();
-        event.preventDefault();
-        setIsLockOpen(!isLockOpen);
+      event.stopPropagation();
+      event.preventDefault();
+      setIsLockOpen(!isLockOpen);
     }
     const iconString: "lock-open" | "lock" = (isLockOpen) ? "lock-open" : "lock";
-    return type === TextInputType.Password && !errorMessage && <FontAwesomeIcon icon={iconString} className={lockIconClassnames} onClick={handlePasswordIconClick}/>
+    return type === TextInputType.Password && !errorMessage && <FontAwesomeIcon icon={iconString} className={lockIconClassnames} onClick={handlePasswordIconClick} />
   }
 
   const InputField = () => {
@@ -140,10 +143,10 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ type = TextInputTy
     <div className={wrapperClassnames} id={id}>
       {label && <label onClick={handleLabelClick} className={labelClassnames}>{label}</label>}
       {errorMessage && <>
-        <FontAwesomeIcon icon="info-circle" className={errorIconClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut}/>
+        <FontAwesomeIcon icon="info-circle" className={errorIconClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut} />
         <a className={errorTextClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut}>{errorMessage}</a>
       </>}
-      {success && !errorMessage && <FontAwesomeIcon icon="check-circle" className={successIconClassnames}/>}
+      {success && !errorMessage && <FontAwesomeIcon icon="check-circle" className={successIconClassnames} />}
       {PasswordShowIcon()}
       {InputField()}
     </div>

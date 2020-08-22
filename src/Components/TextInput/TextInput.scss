@@ -90,6 +90,8 @@
         min-height: #{$fieldHeight + 4px};
         transition: 200ms ease-in-out;
         border: 1px solid $neutralColor;
+        max-width: $fieldWidth;
+        width: $fieldWidth;
 
         &::placeholder {
             visibility: hidden;
@@ -115,6 +117,20 @@
         }
     }
 
+    &.textinput-success, &.textinput-error, &.textinput-password {
+        & > input {
+            padding-right: calc(45px + #{$paddingRightM});
+            max-width: calc(#{$fieldWidth} - 45px);
+            width: calc(#{$fieldWidth} - 45px);
+        }
+
+        & > input:focus {
+            width: $fieldWidth;
+            max-width: $fieldWidth;
+            padding-right: $paddingRightM;
+        }
+    }
+
     &.textinput-disabled {
         & > input {
             background-color: $neutralColor;
@@ -137,6 +153,10 @@
             border: 1px solid $errorColor;
             box-shadow: 0px 0px 4px 0px $errorColor;
         }
+    }
+
+    & > .lock-icon {
+        cursor: pointer;
     }
 
     & > .error-information, & > .success-icon, & > .lock-icon {
@@ -165,6 +185,7 @@
         &.success-information-focus, &.error-information-focus {
             opacity: 0;
             background-color: white;
+            user-select: none;
         }
     }
 }
@@ -186,6 +207,8 @@
         background-color: initial;
         border: 1px solid $neutralColor;
         padding: $paddingSWithoutBorder;
+        width: $fieldWidth;
+        max-width: $fieldWidth;
 
         &:focus {
             padding: $paddingSWithoutBorder;
@@ -199,5 +222,19 @@
 
     & > .error-information, & > .success-icon, & > .lock-icon {
         background-color: white;
+    }
+
+    &.textinput-success, &.textinput-error, &.textinput-password {
+        & > input {
+            padding-right: calc(45px + #{$paddingRightM});
+            max-width: calc(#{$fieldWidth} - 45px);
+            width: calc(#{$fieldWidth} - 45px);
+        }
+
+        & > input:focus {
+            max-width: $fieldWidth;
+            width: $fieldWidth;
+            padding-right: $paddingRightM;
+        }
     }
 }

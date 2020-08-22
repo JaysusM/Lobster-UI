@@ -39,16 +39,17 @@
             resize: none;
         }
     }
-}
 
-.textarea-wrapper-bordered {
-    & > textarea {
-        background-color: initial;
-        border: 1px solid $neutralColor;
-        padding: $paddingSWithoutBorder;
-
-        &:focus {
+    &.textarea-wrapper-bordered {
+        & > textarea {
+            background-color: initial;
+            border: 1px solid $neutralColor;
             padding: $paddingSWithoutBorder;
+    
+            &:focus {
+                padding: $paddingSWithoutBorder;
+                border: 1px solid $focusColor;
+            }
         }
     }
 }
