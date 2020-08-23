@@ -1,0 +1,16 @@
+@import "../../Assets/variables.scss";
+
+.lobster-component.basecard-component {
+    padding: 20px;
+    border-radius: 5px;
+
+    &.light-basecard {
+        background-color: white;
+        box-shadow: 0px 0px 4px 0px $neutralAccentColor;
+    }
+
+    &.dark-basecard {
+        background-color: $neutralAccentColor;
+        box-shadow: 0px 0px 4px 0px $neutralAccentColor;
+    }
+}

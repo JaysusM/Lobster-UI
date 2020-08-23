@@ -6,6 +6,7 @@ import TextArea from '../TextArea/TextArea';
 import Checkbox from '../Checkbox/Checkbox';
 import Loader, { LoaderColor, LoaderType } from '../Loader/Loader';
 import Skeleton, { SkeletonType } from '../Skeleton/Skeleton';
+import BaseCard, { BaseCardType } from '../BaseCard/BaseCard';
 
 export const Demo = () => {
   return (
@@ -45,7 +46,7 @@ export const Demo = () => {
         <TextInput label={"Error"} bordered={true} errorMessage={"This is an error :("} />
         <TextInput label={"Disabled"} bordered={true} disabled={true} />
         <TextInput label={"Success"} success={true} />
-        <TextInput label={"Password"} type={TextInputType.Password} bordered={true}/>
+        <TextInput label={"Password"} type={TextInputType.Password} bordered={true} />
       </div>
       <h1>TextArea Component</h1>
       <h5>Normal. Bordered.</h5>
@@ -63,11 +64,11 @@ export const Demo = () => {
       <h5>Circle. Triple Ball. Custom Image. Progress Line</h5>
       <div className="row-container">
         <Loader type={LoaderType.Circle} />
-        <Loader color={LoaderColor.Primary} type={LoaderType.TripleBall}/>
-        <Loader type={LoaderType.CustomImage} imageUrl={"https://image.flaticon.com/icons/png/512/146/146687.png"}/>
-        <br/>
-        <Loader type={LoaderType.ProgressLine}/>
-        <br/>
+        <Loader color={LoaderColor.Primary} type={LoaderType.TripleBall} />
+        <Loader type={LoaderType.CustomImage} imageUrl={"https://image.flaticon.com/icons/png/512/146/146687.png"} />
+        <br />
+        <Loader type={LoaderType.ProgressLine} />
+        <br />
         <Loader type={LoaderType.ProgressLine} color={LoaderColor.Secondary} />
       </div>
       <h1>Skeleton Component</h1>
@@ -75,13 +76,44 @@ export const Demo = () => {
       <div className="column-container">
         <div className="row-container">
           <Skeleton type={SkeletonType.Circular} height={50} width={50} />
-          <div style={{width: "15px"}} />
+          <div style={{ width: "15px" }} />
           <div className="expanded-center">
             <Skeleton type={SkeletonType.Text} width={200} />
           </div>
         </div>
-        <br/>
+        <br />
         <Skeleton type={SkeletonType.Custom} width={265} height={200} />
+      </div>
+      <h1>BaseCard Component</h1>
+      <h5>Light. Dark.</h5>
+      <div className="row-container">
+        <BaseCard type={BaseCardType.Light}>
+          <div className="column-container">
+            <div className="row-container">
+              <Skeleton type={SkeletonType.Circular} height={50} width={50} />
+              <div style={{ width: "15px" }} />
+              <div className="expanded-center">
+                <Skeleton type={SkeletonType.Text} width={200} />
+              </div>
+            </div>
+            <br />
+            <Skeleton type={SkeletonType.Custom} width={265} height={200} />
+          </div>
+        </BaseCard>
+        <div style={{ width: "15px" }} />
+        <BaseCard type={BaseCardType.Dark}>
+          <div className="column-container">
+            <div className="row-container">
+              <Skeleton type={SkeletonType.Circular} height={50} width={50} />
+              <div style={{ width: "15px" }} />
+              <div className="expanded-center">
+                <Skeleton type={SkeletonType.Text} width={200} />
+              </div>
+            </div>
+            <br />
+            <Skeleton type={SkeletonType.Custom} width={265} height={200} />
+          </div>
+        </BaseCard>
       </div>
     </>
   );
