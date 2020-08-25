@@ -1,0 +1,48 @@
+@import "../../../Assets/variables.scss";
+
+.lobster-component.navbarmenu-component {
+    margin-left: auto;
+    position: relative;
+
+    > .menu-component {
+        display: flex;
+        flex-direction: row;
+    }
+
+    > .menu-icon {
+        display: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        > .menu-icon {
+            padding: $paddingM;
+            display: block;
+        }
+
+        > .menu-component {
+            cursor: pointer;
+            flex-direction: column;
+            visibility: hidden;
+            transition: 200ms ease-in-out;
+            position: absolute;
+            right: calc(-#{$maxButtonWidth} - 10px);
+            top: $horizontalNavbarHeight;
+            background-color: white;
+            border: 1px solid $neutralColor;
+            border-width: 0 1px 1px 1px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            box-shadow: 1px 1px 2px 0 $neutralAccentColor;
+            z-index: 9000000;
+            > .button-wrapper {
+                color: black;
+            }
+        }
+
+        > .menu-component-opened {
+            top: $horizontalNavbarHeight;
+            right: 0;
+            visibility: visible;
+        }
+    }
+}

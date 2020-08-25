@@ -85,7 +85,6 @@
         box-shadow: none;
         box-sizing: unset;
         font-size: $fontSizeM;
-        font-family: $fontFamily;
         max-height: #{$fieldHeight + 4px};
         min-height: #{$fieldHeight + 4px};
         transition: 200ms ease-in-out;
@@ -185,7 +184,6 @@
         &.success-information-focus, &.error-information-focus {
             opacity: 0;
             background-color: white;
-            user-select: none;
         }
     }
 }

@@ -15,7 +15,6 @@
         box-shadow: none;
         box-sizing: unset;
         font-size: $fontSizeM;
-        font-family: $fontFamily;
         min-height: #{$fieldHeight + 4px};
         transition: 200ms ease-in-out background-color box-shadow border;
         border: 1px solid $neutralColor;

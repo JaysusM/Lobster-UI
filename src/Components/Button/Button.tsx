@@ -7,11 +7,16 @@ import fontawesome from "@fortawesome/fontawesome";
 
 fontawesome.library.add(fas);
 
-export enum ButtonType {
+export enum ButtonColor {
   Primary,
   Secondary,
   Cancel,
   Success,
+  White
+}
+
+export enum ButtonType {
+  Normal,
   Simple
 }
 
@@ -23,7 +28,8 @@ export enum IconAlignment {
 export interface ButtonProps {
   label: string,
   icon?: any,
-  buttonType?: ButtonType,
+  type?: ButtonType,
+  color?: ButtonColor,
   bordered?: boolean,
   onClick?: () => void,
   hoverUnderlineEffect?: boolean,
@@ -34,7 +40,7 @@ export interface ButtonProps {
   iconAlignment?: IconAlignment
 }
 
-const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, icon, iconAlignment, onClick, buttonType = ButtonType.Primary, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
+const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, icon, iconAlignment, onClick, color = ButtonColor.Primary, type = ButtonType.Normal, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
 
   // Check if icon exists in our library, if not, we reset its value
   // @ts-ignore
@@ -47,11 +53,12 @@ const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, ic
     "lobster-component",
     "button-wrapper",
     {
-      "primary-button": buttonType === ButtonType.Primary,
-      "secondary-button": buttonType === ButtonType.Secondary,
-      "cancel-button": buttonType === ButtonType.Cancel,
-      "success-button": buttonType === ButtonType.Success,
-      "simple-button": buttonType === ButtonType.Simple,
+      "primary-button": color === ButtonColor.Primary,
+      "secondary-button": color === ButtonColor.Secondary,
+      "cancel-button": color === ButtonColor.Cancel,
+      "success-button": color === ButtonColor.Success,
+      "white-button": color === ButtonColor.White,
+      "simple-button": type === ButtonType.Simple,
       "border-button": bordered,
       "underline-effect": hoverUnderlineEffect && !disabled,
       "move-effect": hoverMoveEffect && !disabled,

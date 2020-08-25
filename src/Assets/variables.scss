@@ -1,13 +1,15 @@
 @import "./colors";
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 $borderRadius: 5px;
 $paddingM: 10px 15px;
 $paddingL: 10px 30px;
 $paddingS: 9px 15px;
 $paddingSWithoutBorder: 9px 15px;
+$horizontalNavbarPadding: 5px 10px;
+$verticalNavbarPadding: 5px 10px;
+$horizontalNavbarHorizontalPadding: 20px;
+$verticalNavbarVerticalPadding: 20px;
 $fontSizeM: 15px;
-$fontFamily: 'Nunito';
 $marginM: 10px 5px;
 $paddingRightM: 15px;
 $marginXL: 25px 7.5px;
@@ -15,8 +17,6 @@ $paddingLeftM: 15px;
 $paddingLeftL: 30px;
 $fieldHeight: 20px;
 $fieldWidth: 185px;
-
-.lobster-component {
-    font-family: $fontFamily, sans-serif;
-    font-size: $fontSizeM;
-}
+$horizontalNavbarHeight: 45px;
+$verticalNavbarWidth: 45px;
+$maxButtonWidth: 400px;

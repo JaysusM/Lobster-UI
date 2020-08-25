@@ -2,7 +2,7 @@ import * as React from 'react';
 import "./TextArea.scss";
 import classNames from 'classnames';
 
-export interface TextInputProps {
+export interface TextAreaProps {
     value?: string,
     onChange?: (value: string) => void,
     bordered?: boolean,
@@ -13,7 +13,7 @@ export interface TextInputProps {
     id?: string
 }
 
-const TextArea: React.FunctionComponent<TextInputProps> = ({ id, className, value, onChange, bordered, disabled, cols, rows }) => {
+const TextArea: React.FunctionComponent<TextAreaProps> = ({ id, className, value, onChange, bordered, disabled, cols, rows }) => {
 
     const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         event.stopPropagation();

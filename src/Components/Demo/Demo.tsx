@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button, { ButtonType, IconAlignment } from '../Button/Button';
+import Button, { ButtonType, IconAlignment, ButtonColor } from '../Button/Button';
 import "./Demo.scss";
 import TextInput, { TextInputType } from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
@@ -7,35 +7,48 @@ import Checkbox from '../Checkbox/Checkbox';
 import Loader, { LoaderColor, LoaderType } from '../Loader/Loader';
 import Skeleton, { SkeletonType } from '../Skeleton/Skeleton';
 import BaseCard, { BaseCardType } from '../BaseCard/BaseCard';
+import NavBar, { NavBarType, NavBarColor } from '../NavBar/NavBar';
+import NavbBarMenu from '../NavBar/NavBarMenu/NavBarMenu';
 
 export const Demo = () => {
+  const skeleton: JSX.Element = <div className="column-container">
+    <div className="row-container">
+      <Skeleton type={SkeletonType.Circular} height={50} width={50} />
+      <div style={{ width: "15px" }} />
+      <div className="expanded-center">
+        <Skeleton type={SkeletonType.Text} width={200} />
+      </div>
+    </div>
+    <br />
+    <Skeleton type={SkeletonType.Custom} width={265} height={200} />
+  </div>;
+
   return (
-    <>
+    <div className="lobster-demo">
       <h1>Button Component</h1>
       <h3>Normal</h3>
       <div className="row-container">
-        <Button label={"Simple"} buttonType={ButtonType.Simple} />
-        <Button label={"Primary"} buttonType={ButtonType.Primary} />
-        <Button label={"Secondary"} buttonType={ButtonType.Secondary} />
-        <Button label={"Cancel"} buttonType={ButtonType.Cancel} />
-        <Button label={"Success"} buttonType={ButtonType.Success} />
+        <Button label={"Simple"} type={ButtonType.Simple} />
+        <Button label={"Primary"} color={ButtonColor.Primary} />
+        <Button label={"Secondary"} color={ButtonColor.Secondary} />
+        <Button label={"Cancel"} color={ButtonColor.Cancel} />
+        <Button label={"Success"} color={ButtonColor.Success} />
       </div>
       <h3>Bordered</h3>
       <div className="row-container">
-        <Button label={"BSimple"} buttonType={ButtonType.Simple} bordered={true} />
-        <Button label={"BPrimary"} buttonType={ButtonType.Primary} bordered={true} />
-        <Button label={"BSecondary"} buttonType={ButtonType.Secondary} bordered={true} />
-        <Button label={"BCancel"} buttonType={ButtonType.Cancel} bordered={true} />
-        <Button label={"BSuccess"} buttonType={ButtonType.Success} bordered={true} />
+        <Button label={"BPrimary"} color={ButtonColor.Primary} bordered={true} />
+        <Button label={"BSecondary"} color={ButtonColor.Secondary} bordered={true} />
+        <Button label={"BCancel"} color={ButtonColor.Cancel} bordered={true} />
+        <Button label={"BSuccess"} color={ButtonColor.Success} bordered={true} />
       </div>
       <h3>Special</h3>
       <h5>With icon. Without movement effect. Without underline effect. Disabled</h5>
       <div className="row-container">
-        <Button icon="camera" label={"Icon"} buttonType={ButtonType.Primary} />
-        <Button icon="bomb" label={"Icon"} buttonType={ButtonType.Primary} iconAlignment={IconAlignment.End} />
-        <Button label={"No movement"} buttonType={ButtonType.Primary} hoverMoveEffect={false} />
-        <Button label={"No underline"} buttonType={ButtonType.Primary} hoverUnderlineEffect={false} />
-        <Button disabled={true} label={"Disabled"} buttonType={ButtonType.Primary} />
+        <Button icon="camera" label={"Icon"} color={ButtonColor.Primary} />
+        <Button icon="bomb" label={"Icon"} color={ButtonColor.Primary} iconAlignment={IconAlignment.End} />
+        <Button label={"No movement"} color={ButtonColor.Primary} hoverMoveEffect={false} />
+        <Button label={"No underline"} color={ButtonColor.Primary} hoverUnderlineEffect={false} />
+        <Button disabled={true} label={"Disabled"} color={ButtonColor.Primary} />
       </div>
       <h1>Input Component</h1>
       <h5>Normal. Bordered. Error. Disabled. Success. Password</h5>
@@ -73,49 +86,31 @@ export const Demo = () => {
       </div>
       <h1>Skeleton Component</h1>
       <h5>Circular. Text. Custom.</h5>
-      <div className="column-container">
-        <div className="row-container">
-          <Skeleton type={SkeletonType.Circular} height={50} width={50} />
-          <div style={{ width: "15px" }} />
-          <div className="expanded-center">
-            <Skeleton type={SkeletonType.Text} width={200} />
-          </div>
-        </div>
-        <br />
-        <Skeleton type={SkeletonType.Custom} width={265} height={200} />
-      </div>
+      {skeleton}
       <h1>BaseCard Component</h1>
       <h5>Light. Dark.</h5>
       <div className="row-container">
         <BaseCard type={BaseCardType.Light}>
-          <div className="column-container">
-            <div className="row-container">
-              <Skeleton type={SkeletonType.Circular} height={50} width={50} />
-              <div style={{ width: "15px" }} />
-              <div className="expanded-center">
-                <Skeleton type={SkeletonType.Text} width={200} />
-              </div>
-            </div>
-            <br />
-            <Skeleton type={SkeletonType.Custom} width={265} height={200} />
-          </div>
+          {skeleton}
         </BaseCard>
         <div style={{ width: "15px" }} />
         <BaseCard type={BaseCardType.Dark}>
-          <div className="column-container">
-            <div className="row-container">
-              <Skeleton type={SkeletonType.Circular} height={50} width={50} />
-              <div style={{ width: "15px" }} />
-              <div className="expanded-center">
-                <Skeleton type={SkeletonType.Text} width={200} />
-              </div>
-            </div>
-            <br />
-            <Skeleton type={SkeletonType.Custom} width={265} height={200} />
-          </div>
+          {skeleton}
         </BaseCard>
       </div>
-    </>
+      <h1>NavBar Component</h1>
+      <h5>Horizontal Primary. Horizontal Secondary.</h5>
+      <div className="relative-container no-margin no-padding">
+        <NavBar>
+          <h3>Lobster UI</h3>
+          <NavbBarMenu options={["Home", "Books", "Help"]} />
+        </NavBar>
+        <NavBar color={NavBarColor.Secondary}>
+          <h3>Lobster UI</h3>
+          <NavbBarMenu options={["Home", "Books", "Help"]} color={ButtonColor.Primary}/>
+        </NavBar>
+      </div>
+    </div>
   );
 }
 
