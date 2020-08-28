@@ -23,7 +23,7 @@
             cursor: pointer;
             flex-direction: column;
             visibility: hidden;
-            transition: 200ms ease-in-out;
+            transition: $transition;
             position: absolute;
             right: calc(-#{$maxButtonWidth} - 10px);
             top: $horizontalNavbarHeight;

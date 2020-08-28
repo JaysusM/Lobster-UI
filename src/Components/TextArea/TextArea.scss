@@ -16,7 +16,7 @@
         box-sizing: unset;
         font-size: $fontSizeM;
         min-height: #{$fieldHeight + 4px};
-        transition: 200ms ease-in-out background-color box-shadow border;
+        transition: $transition;
         border: 1px solid $neutralColor;
 
         &:focus {

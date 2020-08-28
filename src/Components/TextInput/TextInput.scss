@@ -48,7 +48,7 @@
         top: 22px;
         z-index: 9001;
         user-select: none;
-        transition: 200ms ease-in-out;
+        transition: $transition;
         cursor: text;
         max-width: calc(100% - 40px);
         max-height: $fontSizeM;
@@ -87,7 +87,7 @@
         font-size: $fontSizeM;
         max-height: #{$fieldHeight + 4px};
         min-height: #{$fieldHeight + 4px};
-        transition: 200ms ease-in-out;
+        transition: $transition;
         border: 1px solid $neutralColor;
         max-width: $fieldWidth;
         width: $fieldWidth;
@@ -166,7 +166,7 @@
         z-index: 1;
         padding: 13.5px;
         background-color: $neutralColor;
-        transition: 200ms ease-in-out;
+        transition: $transition;
         color: black;
 
         &.error-information {

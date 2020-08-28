@@ -11,7 +11,7 @@
     padding: $paddingM;
     text-align: center;
     margin: $marginM;
-    transition: 200ms ease-in-out;
+    transition: $transition;
     position: relative;
 
     & > .button-container {
@@ -46,7 +46,7 @@
         bottom: 5px;
         width: 0;
         height: 2px;
-        transition: 200ms ease-in-out;
+        transition: $transition;
     }
 
     &:not(.icon-button) {
