@@ -1,0 +1,85 @@
+@import "../../Assets/variables.scss";
+
+.lobster-component.toast-component {
+    display: flex;
+    flex-direction: row;
+    justify-items: flex-start;
+    align-items: center;
+    width: fit-content;
+    padding: $paddingM;
+    border-radius: $borderRadius;
+    box-shadow: 0px 0px 4px 0px $neutralAccentColor;
+    padding-left: calc(#{$paddingLeftM} + 7px);
+    position: relative;
+
+    & > svg { 
+        height: 100%;
+        width: 22.5px;
+        padding-right: $paddingRightM;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 7.5px;
+        width: 3.5px;
+        top: 7.5px;
+        height: calc(100% - 15px);
+        border-radius: calc(#{$borderRadius} + 15px);
+    }
+
+    &.information-toast {
+        & > svg {
+            color: $informationColor;
+        }
+
+        &::after {
+            background-color: $informationColor;
+        }
+    }
+
+    &.warning-toast {
+        & > svg {
+            color: $warningColor;
+        }
+
+        &::after {
+            background-color: $warningColor;
+        }
+    }
+
+    &.error-toast {
+        & > svg {
+            color: $errorColor;
+        }
+
+        &::after {
+            background-color: $errorColor;
+        }
+    }
+
+    &.success-toast {
+        & > svg {
+            color: $successColor;
+        }
+
+        &::after {
+            background-color: $successColor;
+        }
+    }
+
+    & > .toast-container {
+        display: flex;
+        flex-direction: column;
+
+        & > .toast-title {
+            font-weight: bold;
+            font-size: 1em;
+        }
+
+        & > .toast-subtitle {
+            font-size: 0.95em;
+            color: $neutralAccentColor;
+        }
+    }
+}

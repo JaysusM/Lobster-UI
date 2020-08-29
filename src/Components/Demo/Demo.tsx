@@ -9,6 +9,7 @@ import Skeleton, { SkeletonType } from '../Skeleton/Skeleton';
 import BaseCard, { BaseCardType } from '../BaseCard/BaseCard';
 import NavBar, { NavBarType, NavBarColor } from '../NavBar/NavBar';
 import NavbBarMenu from '../NavBar/NavBarMenu/NavBarMenu';
+import Toast, { ToastType } from '../Toast/Toast';
 
 export const Demo = () => {
   const skeleton: JSX.Element = <div className="column-container">
@@ -110,6 +111,17 @@ export const Demo = () => {
           <h3>Lobster UI</h3>
           <NavbBarMenu options={["Home", "Books", "Help"]} color={ButtonColor.Primary}/>
         </NavBar>
+      </div>
+      <h1>Toast</h1>
+      <h5>Information. Warning. Success. Error.</h5>
+      <div className="column-container">
+        <Toast title="We are moving to other domain" subtitle="You can keep visiting us at google.com" type={ToastType.Information}/>
+        <div style={{height: "10px"}} />
+        <Toast title="Payment received" subtitle="We received the payment. Check your mail." type={ToastType.Success}/>
+        <div style={{height: "10px"}} />
+        <Toast title="Account suspended" subtitle="Look like you're account is suspended. Contact our support team." type={ToastType.Warning}/>
+        <div style={{height: "10px"}} />
+        <Toast title="Payment unsuccessful" subtitle="Try using another payment method, please." type={ToastType.Error}/>
       </div>
     </div>
   );

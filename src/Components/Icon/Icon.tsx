@@ -6,19 +6,22 @@ import { DOMAttributes } from 'react';
 
 fontawesome.library.add(fas);
 
+export type IconName = IconProp;
+
 export interface IconProps {
     id?: string,
     className?: string,
-    icon: IconProp,
+    icon: IconName,
+    color?: string
 }
 
 // @ts-ignore
 export const isIconIncludedInIconLibrary = (iconName: string) => Object.keys(fontawesome.library.definitions.fas).includes(iconName);
 
-const Icon: React.FunctionComponent<IconProps & DOMAttributes<SVGSVGElement>> = ({id, className, icon, onClick, ...events}) => {
+const Icon: React.FunctionComponent<IconProps & DOMAttributes<SVGSVGElement>> = ({id, className, icon, color, ...events}) => {
   return (
       // @ts-ignore
-    <FontAwesomeIcon className={className} icon={icon} id={id} {...events}/>
+    <FontAwesomeIcon color={color} className={className} icon={icon} id={id} {...events}/>
   );
 }
 
