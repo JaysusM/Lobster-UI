@@ -2,11 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import Button, { ButtonType, ButtonColor } from '../../Button/Button';
 import "./NavBarMenu.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import fas from '@fortawesome/fontawesome-free-solid';
-import fontawesome from "@fortawesome/fontawesome";
-
-fontawesome.library.add(fas);
+import Icon from '../../Icon/Icon';
 
 export interface NavbBarMenuProps {
     id?: string,
@@ -39,9 +35,9 @@ const NavbBarMenu: React.FunctionComponent<NavbBarMenuProps> = ({ id, className,
 
     return (
         <div className={wrapperClassnames}>
-            <FontAwesomeIcon icon="bars" className="menu-icon" onClick={onMenuIconClick} />
+            <Icon icon="bars" className="menu-icon" onClick={onMenuIconClick} />
             <div className={containerClassnames} id={id}>
-                {options.map((option) => <Button label={option} type={ButtonType.Simple} color={color} />)}
+                {options.map((option: string, index: number) => <Button key={index} label={option} type={ButtonType.Simple} color={color} />)}
             </div>
         </div>
     );

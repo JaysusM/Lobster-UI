@@ -1,11 +1,7 @@
 import * as React from 'react';
 import "./Button.scss";
 import classNames from "classnames";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import fas from '@fortawesome/fontawesome-free-solid';
-import fontawesome from "@fortawesome/fontawesome";
-
-fontawesome.library.add(fas);
+import Icon, {isIconIncludedInIconLibrary} from '../Icon/Icon';
 
 export enum ButtonColor {
   Primary,
@@ -44,7 +40,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, ic
 
   // Check if icon exists in our library, if not, we reset its value
   // @ts-ignore
-  if(!Object.keys(fontawesome.library.definitions.fas).includes(icon)) {
+  if(!isIconIncludedInIconLibrary(icon)) {
       icon = undefined;
   }
 
@@ -84,7 +80,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, ic
   return (
     <div className={wrapperClassNames} id={id} onClick={handleOnClick}>
       <div className={containerClassNames}>
-        {icon && <FontAwesomeIcon icon={icon} />}
+        {icon && <Icon icon={icon} />}
         <a>{label}</a>
       </div>
     </div>

@@ -99,6 +99,7 @@ export const Demo = () => {
         </BaseCard>
       </div>
       <h1>NavBar Component</h1>
+      <h3>With NavBarMenu</h3>
       <h5>Horizontal Primary. Horizontal Secondary.</h5>
       <div className="relative-container no-margin no-padding">
         <NavBar>

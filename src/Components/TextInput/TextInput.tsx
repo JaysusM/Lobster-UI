@@ -2,11 +2,7 @@ import * as React from 'react';
 import "./TextInput.scss";
 import { useState, useRef } from 'react';
 import classNames from 'classnames';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import fas from '@fortawesome/fontawesome-free-solid';
-import fontawesome from "@fortawesome/fontawesome";
-
-fontawesome.library.add(fas);
+import Icon from '../Icon/Icon';
 
 export enum TextInputType {
   Password = "password",
@@ -131,7 +127,7 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ type = TextInputTy
       setIsLockOpen(!isLockOpen);
     }
     const iconString: "lock-open" | "lock" = (isLockOpen) ? "lock-open" : "lock";
-    return type === TextInputType.Password && !errorMessage && <FontAwesomeIcon icon={iconString} className={lockIconClassnames} onClick={handlePasswordIconClick} />
+    return type === TextInputType.Password && !errorMessage && <Icon icon={iconString} className={lockIconClassnames} onClick={handlePasswordIconClick} />
   }
 
   const InputField = () => {
@@ -143,10 +139,10 @@ const TextInput: React.FunctionComponent<TextInputProps> = ({ type = TextInputTy
     <div className={wrapperClassnames} id={id}>
       {label && <label onClick={handleLabelClick} className={labelClassnames}>{label}</label>}
       {errorMessage && <>
-        <FontAwesomeIcon icon="info-circle" className={errorIconClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut} />
+        <Icon icon="info-circle" className={errorIconClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut} />
         <a className={errorTextClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut}>{errorMessage}</a>
       </>}
-      {success && !errorMessage && <FontAwesomeIcon icon="check-circle" className={successIconClassnames} />}
+      {success && !errorMessage && <Icon icon="check-circle" className={successIconClassnames} />}
       {PasswordShowIcon()}
       {InputField()}
     </div>

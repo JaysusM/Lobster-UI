@@ -2,11 +2,7 @@ import * as React from "react";
 import "./Checkbox.scss";
 import classNames from "classnames";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import fas from '@fortawesome/fontawesome-free-solid';
-import fontawesome from "@fortawesome/fontawesome";
-
-fontawesome.library.add(fas);
+import Icon from "../Icon/Icon";
 
 export enum TriState {
     Unmarked,
@@ -70,7 +66,7 @@ const Checkbox: React.FunctionComponent<CheckboxProps> = ({ label, id, className
         <div id={id} className={checkboxWrapperClassnames} onClick={handleChange}>
             {label && <a>{label}</a>}
             <div className={checkboxContainerClassnames}>
-                {((currentValue === true) || (currentValue === TriState.Marked)) && <FontAwesomeIcon icon="check" />}
+                {((currentValue === true) || (currentValue === TriState.Marked)) && <Icon icon="check" />}
                 {(currentValue === TriState.Neutral) && <div className="neutral-line" />}
             </div>
         </div>
