@@ -16,11 +16,18 @@ export interface ToastProps {
     className?: string,
     title: string,
     subtitle: string,
-    type: ToastType
+    type: ToastType,
+    specialIcon?: IconName,
+    isCancelable?: boolean,
+    onCancel?: () => void
 }
 
-const Toast: React.FunctionComponent<ToastProps> = ({id, className, title, subtitle, type}) => {
+const Toast: React.FunctionComponent<ToastProps> = ({id, className, title, subtitle, type, specialIcon, isCancelable, onCancel}) => {
   
+    if (Boolean(isCancelable) !== Boolean(onCancel)) {
+        throw new Error("ERROR. You need to provide both or none arguments isCancelable and onCancel for Toast component");
+    }
+
     const wrapperClassnames = classNames(
         className,
         "lobster-component",
@@ -28,7 +35,8 @@ const Toast: React.FunctionComponent<ToastProps> = ({id, className, title, subti
             "information-toast": type === ToastType.Information,
             "warning-toast": type === ToastType.Warning,
             "success-toast": type === ToastType.Success,
-            "error-toast": type === ToastType.Error
+            "error-toast": type === ToastType.Error,
+            "cancelable-toast": isCancelable
         }
     );
 
@@ -36,19 +44,23 @@ const Toast: React.FunctionComponent<ToastProps> = ({id, className, title, subti
         "toast-container"
     );
 
-    let toastIcon: IconName;
-    switch (type) {
-        case ToastType.Error:
-        case ToastType.Warning:
-            toastIcon = "exclamation-circle";
-            break;
-        case ToastType.Success:
-            toastIcon = "check-circle";
-            break;
-        case ToastType.Information:
-        default:
-            toastIcon = "info-circle";
-            break;
+    let toastIcon: IconName | undefined = specialIcon;
+    if (!toastIcon) {
+        switch (type) {
+            case ToastType.Error:
+                toastIcon = "times-circle";
+                break;
+            case ToastType.Warning:
+                toastIcon = "exclamation-circle";
+                break;
+            case ToastType.Success:
+                toastIcon = "check-circle";
+                break;
+            case ToastType.Information:
+            default:
+                toastIcon = "info-circle";
+                break;
+        }
     }
 
   return (
@@ -58,6 +70,7 @@ const Toast: React.FunctionComponent<ToastProps> = ({id, className, title, subti
             <a className="toast-title">{title}</a>
             <a className="toast-subtitle">{subtitle}</a>
         </div>
+        {isCancelable && <Icon icon="times" className="toast-cancel" onClick={onCancel}/>}
     </div>
   );
 }

@@ -10,8 +10,12 @@ import BaseCard, { BaseCardType } from '../BaseCard/BaseCard';
 import NavBar, { NavBarType, NavBarColor } from '../NavBar/NavBar';
 import NavbBarMenu from '../NavBar/NavBarMenu/NavBarMenu';
 import Toast, { ToastType } from '../Toast/Toast';
+import { ModalToast } from '../Toast/ModalToast/ModalToast';
+import { useState } from 'react';
 
 export const Demo = () => {
+  const [showModalToast, setShowModalToast] = useState<boolean>(false);
+
   const skeleton: JSX.Element = <div className="column-container">
     <div className="row-container">
       <Skeleton type={SkeletonType.Circular} height={50} width={50} />
@@ -109,19 +113,26 @@ export const Demo = () => {
         </NavBar>
         <NavBar color={NavBarColor.Secondary}>
           <h3>Lobster UI</h3>
-          <NavbBarMenu options={["Home", "Books", "Help"]} color={ButtonColor.Primary}/>
+          <NavbBarMenu options={["Home", "Books", "Help"]} color={ButtonColor.Primary} />
         </NavBar>
       </div>
       <h1>Toast</h1>
-      <h5>Information. Warning. Success. Error.</h5>
+      <h5>Information. Warning. Success. Error. Special Icon.</h5>
       <div className="column-container">
-        <Toast title="We are moving to other domain" subtitle="You can keep visiting us at google.com" type={ToastType.Information}/>
-        <div style={{height: "10px"}} />
-        <Toast title="Payment received" subtitle="We received the payment. Check your mail." type={ToastType.Success}/>
-        <div style={{height: "10px"}} />
-        <Toast title="Account suspended" subtitle="Look like you're account is suspended. Contact our support team." type={ToastType.Warning}/>
-        <div style={{height: "10px"}} />
-        <Toast title="Payment unsuccessful" subtitle="Try using another payment method, please." type={ToastType.Error}/>
+        <Toast title="We are moving to other domain" subtitle="You can keep visiting us at google.com" type={ToastType.Information} />
+        <div style={{ height: "10px" }} />
+        <Toast title="Payment received" subtitle="We received the payment. Check your mail." type={ToastType.Success} />
+        <div style={{ height: "10px" }} />
+        <Toast title="Account suspended" subtitle="Look like you're account is suspended. Contact our support team." type={ToastType.Warning} />
+        <div style={{ height: "10px" }} />
+        <Toast title="Payment unsuccessful" subtitle="Try using another payment method, please." type={ToastType.Error} />
+        <div style={{ height: "10px" }} />
+        <Toast title="Special Icon" subtitle="This toast uses an special icon" type={ToastType.Error} specialIcon="react" />
+      </div>
+      <h1>Modal Toast</h1>
+      <div className="row-container">
+        <Button onClick={() => setShowModalToast(true)} type={ButtonType.Normal} label="Show modal"/>
+        {showModalToast && <ModalToast title="Modal Toast Notification" subtitle="This is a modal toast element, it will disappear in a few seconds or when cancel button is pressed" type={ToastType.Information} duration={100000} onDispose={() => setShowModalToast(false)} />}
       </div>
     </div>
   );

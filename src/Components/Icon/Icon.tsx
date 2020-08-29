@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import fas from '@fortawesome/fontawesome-free-solid';
-import fontawesome, { IconProp } from "@fortawesome/fontawesome";
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core'
 import { DOMAttributes } from 'react';
 
-fontawesome.library.add(fas);
+library.add(fab, far, fas);
 
 export type IconName = IconProp;
 
@@ -16,13 +19,25 @@ export interface IconProps {
 }
 
 // @ts-ignore
-export const isIconIncludedInIconLibrary = (iconName: string) => Object.keys(fontawesome.library.definitions.fas).includes(iconName);
+export const isIconIncludedInIconLibrary = (iconName: string) => Object.keys(library.definitions.fas).includes(iconName) || Object.keys(library.definitions.fab).includes(iconName) || Object.keys(library.definitions.far).includes(iconName);
 
-const Icon: React.FunctionComponent<IconProps & DOMAttributes<SVGSVGElement>> = ({id, className, icon, color, ...events}) => {
-  return (
-      // @ts-ignore
-    <FontAwesomeIcon color={color} className={className} icon={icon} id={id} {...events}/>
-  );
+const Icon: React.FunctionComponent<IconProps & DOMAttributes<SVGSVGElement>> = ({ id, className, icon, color, ...events }) => {
+    let libraryPrefix: string;
+    // @ts-ignore
+    if (Object.keys(library.definitions.fas).includes(icon)) {
+        libraryPrefix = "fas";
+    // @ts-ignore
+    } else if (Object.keys(library.definitions.far).includes(icon)) {
+        libraryPrefix = "far";
+    // @ts-ignore
+    } else if (Object.keys(library.definitions.fab).includes(icon)) {
+        libraryPrefix = "fab";
+    }
+
+    return (
+        // @ts-ignore
+        <FontAwesomeIcon color={color} className={className} icon={[libraryPrefix, icon]} id={id} {...events} />
+    );
 }
 
 export default Icon;

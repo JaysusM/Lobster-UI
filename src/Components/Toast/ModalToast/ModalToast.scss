@@ -1,0 +1,16 @@
+.lobster-component.modaltoast-component {
+    transition: 500ms ease-in-out;
+    z-index: 99999999999;
+
+    &.modaltoast-hidden {
+        position: fixed;
+        top: 70px;
+        right: -600px;
+    }
+
+    &.modaltoast-show {
+        position: fixed;
+        top: 70px;
+        right: 25px;
+    }
+}
