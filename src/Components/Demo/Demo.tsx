@@ -12,6 +12,7 @@ import NavbBarMenu from '../NavBar/NavBarMenu/NavBarMenu';
 import Toast, { ToastType } from '../Toast/Toast';
 import ModalToast from '../Toast/ModalToast/ModalToast';
 import { useState } from 'react';
+import ListItem from '../ListItem/ListItem';
 
 export const Demo = () => {
   const [showModalToast, setShowModalToast] = useState<boolean>(false);
@@ -133,6 +134,15 @@ export const Demo = () => {
       <div className="row-container">
         <Button onClick={() => setShowModalToast(true)} type={ButtonType.Normal} label="Show modal"/>
         {showModalToast && <ModalToast title="Modal Toast Notification" subtitle="This is a modal toast element, it will disappear in a few seconds or when cancel button is pressed" type={ToastType.Success} duration={5000} onDispose={() => setShowModalToast(false)} />}
+      </div>
+      <h1>List Item</h1>
+      <div className="row-container">
+        <div className="column-container">
+          <ListItem label={"Pay with Amazon"} icon="amazon-pay"/>
+          <ListItem label={"Demo video"} icon="video"/>
+          <ListItem label={"React Components"} icon="react"/>
+          <ListItem label={"Contact us"} />
+        </div>  
       </div>
     </div>
   );

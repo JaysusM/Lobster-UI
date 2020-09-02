@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./Checkbox.scss";
 import classNames from "classnames";
-import { useState } from "react";
+import { useState, DOMAttributes } from "react";
 import Icon from "../Icon/Icon";
 
 export enum TriState {
@@ -16,10 +16,10 @@ export interface CheckboxProps {
     onChange?: (value: boolean | TriState) => void,
     className?: string,
     id?: string,
-    isTristate?: boolean
+    isTristate?: boolean,
 }
 
-const Checkbox: React.FunctionComponent<CheckboxProps> = ({ label, id, className, isTristate, value, onChange }) => {
+const Checkbox: React.FunctionComponent<CheckboxProps & DOMAttributes<Element>> = ({ label, id, className, isTristate, value, onChange }) => {
 
     const initialState: boolean | TriState = (isTristate) ? (value ?? TriState.Unmarked) : (value ?? false);
 

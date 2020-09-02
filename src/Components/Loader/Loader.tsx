@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import "./Loader.scss";
+import { DOMAttributes } from 'react';
 
 export enum LoaderColor {
     Primary,
@@ -24,7 +25,7 @@ export interface LoaderProps {
     imageUrl?: string
 }
 
-const Loader: React.FunctionComponent<LoaderProps> = ({id, type, imageUrl, className, color = LoaderColor.Primary}) => {
+const Loader: React.FunctionComponent<LoaderProps & DOMAttributes<Element>> = ({id, type, imageUrl, className, color = LoaderColor.Primary}) => {
 
     if (type === LoaderType.CustomImage && !imageUrl) {
         throw new Error("ERROR. Lobster UI. Please provide an Image URL for CustomImage Loader");

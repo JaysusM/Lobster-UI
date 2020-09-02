@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import "./Skeleton.scss";
+import { DOMAttributes } from 'react';
 
 export enum SkeletonType {
     Text,
@@ -16,13 +17,14 @@ export interface SkeletonProps {
     height?: number
 }
 
-const Skeleton: React.FunctionComponent<SkeletonProps> = ({ id, className, type = SkeletonType.Text, width, height }) => {
+const Skeleton: React.FunctionComponent<SkeletonProps & DOMAttributes<Element>> = ({ id, className, type = SkeletonType.Text, width, height }) => {
 
     if ((!height || !width) && [SkeletonType.Custom, SkeletonType.Circular].includes(type)) {
         throw new Error("Custom and Circular Skeleton needs height and width attributes. Default values for height: fontSize, width: 100%");
     }
 
     const containerClassname: string = classNames(
+        className,
         "lobster-component",
         "skeleton-component", {
         "text-skeleton": type === SkeletonType.Text,
@@ -54,7 +56,7 @@ const Skeleton: React.FunctionComponent<SkeletonProps> = ({ id, className, type 
     }
 
     return (
-        <div className={containerClassname} style={containerStyles} />
+        <div className={containerClassname} style={containerStyles} id={id}/>
     );
 }
 
