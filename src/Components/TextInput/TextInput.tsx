@@ -1,6 +1,6 @@
 import * as React from 'react';
 import "./TextInput.scss";
-import { useState, useRef } from 'react';
+import { useState, useRef, DOMAttributes } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 
@@ -23,7 +23,7 @@ export interface TextInputProps {
   type?: TextInputType
 }
 
-const TextInput: React.FunctionComponent<TextInputProps> = ({ type = TextInputType.Text, id, className, label, errorMessage, success, placeholder, value, onChange, bordered, disabled }) => {
+const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>> = ({ type = TextInputType.Text, id, className, label, errorMessage, success, placeholder, value, onChange, bordered, disabled }) => {
 
   const inputRef: any = useRef();
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);

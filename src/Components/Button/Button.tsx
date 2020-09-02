@@ -2,6 +2,7 @@ import * as React from 'react';
 import "./Button.scss";
 import classNames from "classnames";
 import Icon, {isIconIncludedInIconLibrary} from '../Icon/Icon';
+import { DOMAttributes } from 'react';
 
 export enum ButtonColor {
   Primary,
@@ -36,7 +37,7 @@ export interface ButtonProps {
   iconAlignment?: IconAlignment
 }
 
-const Button: React.FunctionComponent<ButtonProps> = ({ className, id, label, icon, iconAlignment, onClick, color = ButtonColor.Primary, type = ButtonType.Normal, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
+const Button: React.FunctionComponent<ButtonProps & DOMAttributes<Element>> = ({ className, id, label, icon, iconAlignment, onClick, color = ButtonColor.Primary, type = ButtonType.Normal, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
 
   // Check if icon exists in our library, if not, we reset its value
   // @ts-ignore

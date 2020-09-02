@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Button, { ButtonType, ButtonColor } from '../../Button/Button';
 import "./NavBarMenu.scss";
 import Icon from '../../Icon/Icon';
+import { DOMAttributes } from 'react';
 
 export interface NavbBarMenuProps {
     id?: string,
@@ -11,7 +12,7 @@ export interface NavbBarMenuProps {
     color?: ButtonColor
 }
 
-const NavbBarMenu: React.FunctionComponent<NavbBarMenuProps> = ({ id, className, options, color = ButtonColor.White }) => {
+const NavbBarMenu: React.FunctionComponent<NavbBarMenuProps & DOMAttributes<Element>> = ({ id, className, options, color = ButtonColor.White }) => {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
 

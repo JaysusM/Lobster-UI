@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import "./NavBar.scss";
-import { ReactNode } from 'react';
+import { ReactNode, DOMAttributes } from 'react';
 
 export enum NavBarColor {
     Primary,
@@ -20,7 +20,7 @@ export interface NavBarProps {
     children?: ReactNode
 }
 
-const NavBar: React.FunctionComponent<NavBarProps> = ({ id, className, color = NavBarColor.Primary, type = NavBarType.Horizontal, children}) => {
+const NavBar: React.FunctionComponent<NavBarProps & DOMAttributes<Element>> = ({ id, className, color = NavBarColor.Primary, type = NavBarType.Horizontal, children}) => {
 
     const navbarClassnames: string = classNames(
         className,

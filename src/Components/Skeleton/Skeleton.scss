@@ -1,9 +1,12 @@
 @import "../../Assets/variables.scss";
 
+$waveWidth: 100%;
+
 .lobster-component.skeleton-component {
     background-color: $neutralColor;
+    position: relative;
     
-    @keyframes skeletonEffect {
+    @keyframes blinkEffect {
         from {
             opacity: 1;
         }
@@ -17,7 +20,36 @@
         }
     }
 
-    animation: skeletonEffect 1.5s linear infinite;
+    @keyframes waveEffect {
+        from {
+            left: -$waveWidth;
+        }
+
+        50% {
+            left: 50%;
+        }
+
+        to {
+            left: 200%;
+        }
+    }
+
+    &.blink-animation {
+        animation: skeletonEffect 1.5s linear infinite;
+    }
+
+    &.wave-animation {
+        overflow: hidden;
+        &::after {
+            content: '';
+            width: $waveWidth;
+            left: -$waveWidth;
+            height: 100%;
+            position: absolute;
+            animation: waveEffect 2.5s linear infinite;
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+        }
+    }
 
     &.text-skeleton {
         width: 100%;

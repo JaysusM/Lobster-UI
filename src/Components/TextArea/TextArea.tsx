@@ -1,6 +1,7 @@
 import * as React from 'react';
 import "./TextArea.scss";
 import classNames from 'classnames';
+import { DOMAttributes } from 'react';
 
 export interface TextAreaProps {
     value?: string,
@@ -13,7 +14,7 @@ export interface TextAreaProps {
     id?: string
 }
 
-const TextArea: React.FunctionComponent<TextAreaProps> = ({ id, className, value, onChange, bordered, disabled, cols, rows }) => {
+const TextArea: React.FunctionComponent<TextAreaProps & DOMAttributes<Element>> = ({ id, className, value, onChange, bordered, disabled, cols, rows }) => {
 
     const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         event.stopPropagation();

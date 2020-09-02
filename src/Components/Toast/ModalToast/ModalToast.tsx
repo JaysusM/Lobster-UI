@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FunctionComponent, DOMAttributes } from "react";
 import Toast, { ToastType, ToastProps } from "./../Toast";
 import ReactDOM from "react-dom";
 import "./ModalToast.scss";
@@ -10,7 +10,7 @@ export type ModalToastProps = {
     onDispose?: () => void
 } & ToastProps;
 
-const ModalToast = ({ duration, id, className, onDispose, ...args }: ModalToastProps): JSX.Element => {
+const ModalToast: FunctionComponent<ModalToastProps & DOMAttributes<Element>>= ({ duration, id, className, onDispose, ...args }): JSX.Element => {
     const [toastElement, setToastElement] = useState<HTMLDivElement>();
 
     const cleanModalToast = () => {

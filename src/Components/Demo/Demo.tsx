@@ -5,7 +5,7 @@ import TextInput, { TextInputType } from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
 import Checkbox from '../Checkbox/Checkbox';
 import Loader, { LoaderColor, LoaderType } from '../Loader/Loader';
-import Skeleton, { SkeletonType } from '../Skeleton/Skeleton';
+import Skeleton, { SkeletonType, SkeletonAnimation } from '../Skeleton/Skeleton';
 import BaseCard, { BaseCardType } from '../BaseCard/BaseCard';
 import NavBar, { NavBarColor } from '../NavBar/NavBar';
 import NavbBarMenu from '../NavBar/NavBarMenu/NavBarMenu';
@@ -17,16 +17,16 @@ import ListItem from '../ListItem/ListItem';
 export const Demo = () => {
   const [showModalToast, setShowModalToast] = useState<boolean>(false);
 
-  const skeleton: JSX.Element = <div className="column-container">
+  const skeleton = (animation?: SkeletonAnimation): JSX.Element => <div className="column-container">
     <div className="row-container">
-      <Skeleton type={SkeletonType.Circular} height={50} width={50} />
+      <Skeleton type={SkeletonType.Circular} animation={animation} height={50} width={50} />
       <div style={{ width: "15px" }} />
       <div className="expanded-center">
-        <Skeleton type={SkeletonType.Text} width={200} />
+        <Skeleton type={SkeletonType.Text} animation={animation} width={200} />
       </div>
     </div>
     <br />
-    <Skeleton type={SkeletonType.Custom} width={265} height={200} />
+    <Skeleton type={SkeletonType.Custom} animation={animation} width={265} height={200} />
   </div>;
 
   return (
@@ -92,16 +92,21 @@ export const Demo = () => {
       </div>
       <h1>Skeleton Component</h1>
       <h5>Circular. Text. Custom.</h5>
-      {skeleton}
+      <h5>Blink Animation. Wave Animation</h5>
+      <div className="row-container">
+        {skeleton(SkeletonAnimation.Blink)}
+        <div style={{width: "50px"}} />
+        {skeleton(SkeletonAnimation.Wave)}
+      </div>
       <h1>BaseCard Component</h1>
       <h5>Light. Dark.</h5>
       <div className="row-container">
         <BaseCard type={BaseCardType.Light}>
-          {skeleton}
+          {skeleton()}
         </BaseCard>
         <div style={{ width: "15px" }} />
         <BaseCard type={BaseCardType.Dark}>
-          {skeleton}
+          {skeleton()}
         </BaseCard>
       </div>
       <h1>NavBar Component</h1>
@@ -132,17 +137,17 @@ export const Demo = () => {
       </div>
       <h1>Modal Toast</h1>
       <div className="row-container">
-        <Button onClick={() => setShowModalToast(true)} type={ButtonType.Normal} label="Show modal"/>
+        <Button onClick={() => setShowModalToast(true)} type={ButtonType.Normal} label="Show modal" />
         {showModalToast && <ModalToast title="Modal Toast Notification" subtitle="This is a modal toast element, it will disappear in a few seconds or when cancel button is pressed" type={ToastType.Success} duration={5000} onDispose={() => setShowModalToast(false)} />}
       </div>
       <h1>List Item</h1>
       <div className="row-container">
         <div className="column-container">
-          <ListItem label={"Pay with Amazon"} icon="amazon-pay"/>
-          <ListItem label={"Demo video"} icon="video"/>
-          <ListItem label={"React Components"} icon="react"/>
+          <ListItem label={"Pay with Amazon"} icon="amazon-pay" />
+          <ListItem label={"Demo video"} icon="video" />
+          <ListItem label={"React Components"} icon="react" />
           <ListItem label={"Contact us"} />
-        </div>  
+        </div>
       </div>
     </div>
   );
