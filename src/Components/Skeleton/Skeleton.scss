@@ -17,7 +17,7 @@
         }
     }
 
-    animation: 1.5s skeletonEffect linear infinite;
+    animation: skeletonEffect 1.5s linear infinite;
 
     &.text-skeleton {
         width: 100%;

@@ -10,7 +10,7 @@ export type ModalToastProps = {
     onDispose?: () => void
 } & ToastProps;
 
-export const ModalToast = ({ duration, id, className, onDispose, ...args }: ModalToastProps): JSX.Element => {
+const ModalToast = ({ duration, id, className, onDispose, ...args }: ModalToastProps): JSX.Element => {
     const [toastElement, setToastElement] = useState<HTMLDivElement>();
 
     const cleanModalToast = () => {
@@ -59,3 +59,5 @@ export const ModalToast = ({ duration, id, className, onDispose, ...args }: Moda
 
     return (toastElement) ? ReactDOM.createPortal(<Toast {...args} isCancelable={true} onCancel={cancelModalToast} />, toastElement) : <React.Fragment />;
 }
+
+export default ModalToast;

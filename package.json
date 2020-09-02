@@ -1,9 +1,9 @@
 {
-  "name": "Lobster-UI",
+  "name": "@jaysusm/lobster-ui",
   "displayName": "Lobster UI",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A simple awesome React's components library",
-  "main": "index.tsx",
+  "main": "main.ts",
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
@@ -35,7 +35,7 @@
     ]
   },
   "author": "Apache Cordova Team",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
@@ -44,7 +44,6 @@
     "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
     "css-loader": "^4.2.1",
-    "html-webpack-plugin": "^4.3.0",
     "sass-loader": "^9.0.3",
     "style-loader": "^1.2.1",
     "terser-webpack-plugin": "^4.1.0",
@@ -53,5 +52,16 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaysusM/Lobster-UI.git"
+  },
+  "keywords": [
+    "ui"
+  ],
+  "bugs": {
+    "url": "https://github.com/JaysusM/Lobster-UI/issues"
+  },
+  "homepage": "https://github.com/JaysusM/Lobster-UI#readme"
 }

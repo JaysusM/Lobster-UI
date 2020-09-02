@@ -1,12 +1,11 @@
 var webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.tsx',
     output: {
-        path: path.resolve(__dirname, 'www'),
+        path: path.resolve(__dirname, 'build'),
         filename: 'bundle.js'
     },
     module: {
@@ -47,8 +46,5 @@ module.exports = {
         port: process.env.PORT || 8080,
         contentBase: './src',
         historyApiFallback: true
-    },
-    plugins: [new HtmlWebpackPlugin({
-      filename: 'src/index.html'
-    })]
+    }
 };

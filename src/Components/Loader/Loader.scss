@@ -17,11 +17,11 @@ $loaderMargin: 10px;
     }
 
     &.circle-loader, &.tripleball-loader {
-        animation: 1500ms loaderEffect linear infinite;
+        animation: loaderEffect 1500ms linear infinite;
     }
 
     &.circle-loader::after {
-        animation: 0.5s loaderEffect linear infinite;
+        animation: loaderEffect 0.5s linear infinite;
     }
 
     &.circle-loader {
@@ -123,7 +123,7 @@ $loaderMargin: 10px;
         height: $loaderHeight;
         margin: $loaderMargin;
         
-        animation: 1200ms loaderCustomEffect linear infinite;
+        animation: loaderCustomEffect 1200ms linear infinite;
 
         & > img {
             height: 100%;
@@ -168,7 +168,7 @@ $loaderMargin: 10px;
             position: absolute;
             left: -10%;
             z-index: 2;
-            animation: 2s progresslineEffect linear infinite;
+            animation: progresslineEffect 2s linear infinite;
         }
     }
 }

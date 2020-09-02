@@ -7,10 +7,10 @@ import Checkbox from '../Checkbox/Checkbox';
 import Loader, { LoaderColor, LoaderType } from '../Loader/Loader';
 import Skeleton, { SkeletonType } from '../Skeleton/Skeleton';
 import BaseCard, { BaseCardType } from '../BaseCard/BaseCard';
-import NavBar, { NavBarType, NavBarColor } from '../NavBar/NavBar';
+import NavBar, { NavBarColor } from '../NavBar/NavBar';
 import NavbBarMenu from '../NavBar/NavBarMenu/NavBarMenu';
 import Toast, { ToastType } from '../Toast/Toast';
-import { ModalToast } from '../Toast/ModalToast/ModalToast';
+import ModalToast from '../Toast/ModalToast/ModalToast';
 import { useState } from 'react';
 
 export const Demo = () => {
@@ -132,7 +132,7 @@ export const Demo = () => {
       <h1>Modal Toast</h1>
       <div className="row-container">
         <Button onClick={() => setShowModalToast(true)} type={ButtonType.Normal} label="Show modal"/>
-        {showModalToast && <ModalToast title="Modal Toast Notification" subtitle="This is a modal toast element, it will disappear in a few seconds or when cancel button is pressed" type={ToastType.Information} duration={100000} onDispose={() => setShowModalToast(false)} />}
+        {showModalToast && <ModalToast title="Modal Toast Notification" subtitle="This is a modal toast element, it will disappear in a few seconds or when cancel button is pressed" type={ToastType.Success} duration={5000} onDispose={() => setShowModalToast(false)} />}
       </div>
     </div>
   );
