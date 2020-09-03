@@ -1,0 +1,43 @@
+@import "../../Assets/variables.scss";
+
+.lobster-component.radio-wrapper {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: $marginXL;
+
+    & > .radio-container {
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        border: 2px solid $neutralColor;
+        cursor: pointer;
+        transition: $transition;
+        position: relative;
+        margin-left: 10px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 2.5px;
+            width: 9px;
+            height: 9px;
+            top: calc((100% - 9px) / 2);
+            background-color: transparent;
+            border-radius: 100%;
+            transition: $transition;
+        }
+
+        &.radio-selected {
+            border: 2px solid $mainColor;
+            &::after {
+                background-color: $mainColor;
+            }
+        }
+
+        &:hover {
+            box-shadow: 0px 0px 4px 0px $focusColor;
+        }
+    }
+}

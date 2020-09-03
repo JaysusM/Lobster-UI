@@ -19,7 +19,7 @@ export interface CheckboxProps {
     isTristate?: boolean,
 }
 
-const Checkbox: React.FunctionComponent<CheckboxProps & DOMAttributes<Element>> = ({ label, id, className, isTristate, value, onChange }) => {
+const Checkbox: React.FunctionComponent<CheckboxProps & DOMAttributes<Element>> = ({ label, id, className, isTristate, value, onChange, ...domAttributes }) => {
 
     const initialState: boolean | TriState = (isTristate) ? (value ?? TriState.Unmarked) : (value ?? false);
 
@@ -63,7 +63,7 @@ const Checkbox: React.FunctionComponent<CheckboxProps & DOMAttributes<Element>> 
     });
 
     return (
-        <div id={id} className={checkboxWrapperClassnames} onClick={handleChange}>
+        <div id={id} className={checkboxWrapperClassnames} onClick={handleChange} {...domAttributes}>
             {label && <a>{label}</a>}
             <div className={checkboxContainerClassnames}>
                 {((currentValue === true) || (currentValue === TriState.Marked)) && <Icon icon="check" />}

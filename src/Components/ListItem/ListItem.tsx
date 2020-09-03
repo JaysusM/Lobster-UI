@@ -52,7 +52,7 @@ const ListItem: React.FunctionComponent<ListItemProps & DOMAttributes<Element>> 
         }
 
         return <>
-            {children && <Icon icon="caret-down" className="childrenbutton-component" onClick={onChildrenButtonClick} />}
+            {children && <Icon icon="chevron-down" className="childrenbutton-component" onClick={onChildrenButtonClick} />}
         </>
     }
 

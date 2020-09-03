@@ -13,6 +13,7 @@ import Toast, { ToastType } from '../Toast/Toast';
 import ModalToast from '../Toast/ModalToast/ModalToast';
 import { useState } from 'react';
 import ListItem from '../ListItem/ListItem';
+import Radio from '../Radio/Radio';
 
 export const Demo = () => {
   const [showModalToast, setShowModalToast] = useState<boolean>(false);
@@ -79,12 +80,17 @@ export const Demo = () => {
         <Checkbox label={"Normal Checkbox:"} />
         <Checkbox label={"TriState Checkbox:"} isTristate={true} />
       </div>
+      <h1>Radio Component</h1>
+      <h5>Normal</h5>
+      <div className="row-container">
+        <Radio label={"Radio Button:"}/>
+      </div>
       <h1>Loader Component</h1>
       <h5>Circle. Triple Ball. Custom Image. Progress Line</h5>
       <div className="row-container">
         <Loader type={LoaderType.Circle} />
         <Loader color={LoaderColor.Primary} type={LoaderType.TripleBall} />
-        <Loader type={LoaderType.CustomImage} imageUrl={"https://image.flaticon.com/icons/png/512/146/146687.png"} />
+        <Loader type={LoaderType.CustomImage} imageUrl={"https://i.imgur.com/NVeYmf3.png"} />
         <br />
         <Loader type={LoaderType.ProgressLine} />
         <br />
@@ -147,7 +153,7 @@ export const Demo = () => {
           <ListItem label={"Demo video"} icon="video">
             <ListItem label={"Option 1"}/>
             <ListItem label={"Option 2"}>
-              <ListItem label={"Option 3"}/>
+              <ListItem label={"Option 2.1"}/>
             </ListItem>
           </ListItem>
           <ListItem label={"React Components"} icon="react" />
