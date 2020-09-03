@@ -25,7 +25,7 @@ export interface LoaderProps {
     imageUrl?: string
 }
 
-const Loader: React.FunctionComponent<LoaderProps & DOMAttributes<Element>> = ({id, type, imageUrl, className, color = LoaderColor.Primary}) => {
+const Loader: React.FunctionComponent<LoaderProps & DOMAttributes<Element>> = ({id, type, imageUrl, className, color = LoaderColor.Primary, ...domAttributes}) => {
 
     if (type === LoaderType.CustomImage && !imageUrl) {
         throw new Error("ERROR. Lobster UI. Please provide an Image URL for CustomImage Loader");
@@ -64,7 +64,7 @@ const LoaderContent = (): JSX.Element | undefined => {
 }
 
   return (
-    <div className={loaderClassnames} id={id}>
+    <div className={loaderClassnames} id={id} {...domAttributes}>
         {LoaderContent()}
     </div>
   );

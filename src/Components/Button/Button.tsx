@@ -37,8 +37,7 @@ export interface ButtonProps {
   iconAlignment?: IconAlignment
 }
 
-const Button: React.FunctionComponent<ButtonProps & DOMAttributes<Element>> = ({ className, id, label, icon, iconAlignment, onClick, color = ButtonColor.Primary, type = ButtonType.Normal, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled }) => {
-
+const Button: React.FunctionComponent<ButtonProps & DOMAttributes<Element>> = ({ className, id, label, icon, iconAlignment, onClick, color = ButtonColor.Primary, type = ButtonType.Normal, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled, ...domAttributes }) => {
   // Check if icon exists in our library, if not, we reset its value
   // @ts-ignore
   if(!isIconIncludedInIconLibrary(icon)) {
@@ -79,7 +78,7 @@ const Button: React.FunctionComponent<ButtonProps & DOMAttributes<Element>> = ({
   }
 
   return (
-    <div className={wrapperClassNames} id={id} onClick={handleOnClick}>
+    <div className={wrapperClassNames} id={id} onClick={handleOnClick} {...domAttributes}>
       <div className={containerClassNames}>
         {icon && <Icon icon={icon} />}
         <a>{label}</a>

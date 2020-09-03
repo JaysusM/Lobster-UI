@@ -21,7 +21,7 @@ export interface IconProps {
 // @ts-ignore
 export const isIconIncludedInIconLibrary = (iconName: string) => Object.keys(library.definitions.fas).includes(iconName) || Object.keys(library.definitions.fab).includes(iconName) || Object.keys(library.definitions.far).includes(iconName);
 
-const Icon: React.FunctionComponent<IconProps & DOMAttributes<SVGSVGElement>> = ({ id, className, icon, color, ...events }) => {
+const Icon: React.FunctionComponent<IconProps & DOMAttributes<SVGSVGElement>> = ({ id, className, icon, color, ...domAttributes }) => {
     let libraryPrefix: string;
     // @ts-ignore
     if (Object.keys(library.definitions.fas).includes(icon)) {
@@ -36,7 +36,7 @@ const Icon: React.FunctionComponent<IconProps & DOMAttributes<SVGSVGElement>> = 
 
     return (
         // @ts-ignore
-        <FontAwesomeIcon color={color} className={className} icon={[libraryPrefix, icon]} id={id} {...events} />
+        <FontAwesomeIcon color={color} className={className} icon={[libraryPrefix, icon]} id={id} {...domAttributes} />
     );
 }
 

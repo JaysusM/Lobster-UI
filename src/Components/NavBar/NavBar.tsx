@@ -20,7 +20,7 @@ export interface NavBarProps {
     children?: ReactNode
 }
 
-const NavBar: React.FunctionComponent<NavBarProps & DOMAttributes<Element>> = ({ id, className, color = NavBarColor.Primary, type = NavBarType.Horizontal, children}) => {
+const NavBar: React.FunctionComponent<NavBarProps & DOMAttributes<Element>> = ({ id, className, color = NavBarColor.Primary, type = NavBarType.Horizontal, children, ...domAttributes}) => {
 
     const navbarClassnames: string = classNames(
         className,
@@ -33,7 +33,7 @@ const NavBar: React.FunctionComponent<NavBarProps & DOMAttributes<Element>> = ({
     );
 
     return (
-        <div id={id} className={navbarClassnames}>
+        <div id={id} className={navbarClassnames} {...domAttributes}>
             {children}
         </div>
     );

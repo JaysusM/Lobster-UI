@@ -10,7 +10,7 @@ export type ModalToastProps = {
     onDispose?: () => void
 } & ToastProps;
 
-const ModalToast: FunctionComponent<ModalToastProps & DOMAttributes<Element>>= ({ duration, id, className, onDispose, ...args }): JSX.Element => {
+const ModalToast: FunctionComponent<ModalToastProps & DOMAttributes<Element>>= ({ duration, id, className, onDispose, ...domAttributes }): JSX.Element => {
     const [toastElement, setToastElement] = useState<HTMLDivElement>();
 
     const cleanModalToast = () => {
@@ -57,7 +57,7 @@ const ModalToast: FunctionComponent<ModalToastProps & DOMAttributes<Element>>= (
         }, 1);
     }, [toastElement]);
 
-    return (toastElement) ? ReactDOM.createPortal(<Toast {...args} isCancelable={true} onCancel={cancelModalToast} />, toastElement) : <React.Fragment />;
+    return (toastElement) ? ReactDOM.createPortal(<Toast {...domAttributes} isCancelable={true} onCancel={cancelModalToast} />, toastElement) : <React.Fragment />;
 }
 
 export default ModalToast;

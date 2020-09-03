@@ -23,7 +23,7 @@ export interface ToastProps {
     onCancel?: () => void
 }
 
-const Toast: React.FunctionComponent<ToastProps & DOMAttributes<Element>> = ({id, className, title, subtitle, type, specialIcon, isCancelable, onCancel}) => {
+const Toast: React.FunctionComponent<ToastProps & DOMAttributes<Element>> = ({id, className, title, subtitle, type, specialIcon, isCancelable, onCancel, ...domAttributes}) => {
   
     if (Boolean(isCancelable) !== Boolean(onCancel)) {
         throw new Error("ERROR. You need to provide both or none arguments isCancelable and onCancel for Toast component");
@@ -65,7 +65,7 @@ const Toast: React.FunctionComponent<ToastProps & DOMAttributes<Element>> = ({id
     }
 
   return (
-    <div className={wrapperClassnames} id={id}>
+    <div className={wrapperClassnames} id={id} {...domAttributes}>
         <Icon icon={toastIcon} />
         <div className={containerClassnames}>
             <a className="toast-title">{title}</a>

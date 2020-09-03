@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import "./BaseCard.scss";
-import { ReactNode } from 'react';
+import { ReactNode, DOMAttributes } from 'react';
 
 export enum BaseCardType {
   Light,
@@ -15,7 +15,7 @@ export interface BaseCardProps {
     type?: BaseCardType
 }
 
-const BaseCard: React.FunctionComponent<BaseCardProps> = ({id, className, children, type = BaseCardType.Light}) => {
+const BaseCard: React.FunctionComponent<BaseCardProps & DOMAttributes<Element>> = ({id, className, children, type = BaseCardType.Light, ...domAttributes}) => {
   
     const containerClassnames: string = classNames(
       className,  
@@ -26,7 +26,7 @@ const BaseCard: React.FunctionComponent<BaseCardProps> = ({id, className, childr
     });
   
     return (
-    <div id={id} className={containerClassnames}>
+    <div id={id} className={containerClassnames} {...domAttributes}>
       {children}
     </div>
   );

@@ -144,9 +144,14 @@ export const Demo = () => {
       <div className="row-container">
         <div className="column-container">
           <ListItem label={"Pay with Amazon"} icon="amazon-pay" />
-          <ListItem label={"Demo video"} icon="video" />
+          <ListItem label={"Demo video"} icon="video">
+            <ListItem label={"Option 1"}/>
+            <ListItem label={"Option 2"}>
+              <ListItem label={"Option 3"}/>
+            </ListItem>
+          </ListItem>
           <ListItem label={"React Components"} icon="react" />
-          <ListItem label={"Contact us"} />
+          <ListItem label={"Contact us"}/>
         </div>
       </div>
     </div>

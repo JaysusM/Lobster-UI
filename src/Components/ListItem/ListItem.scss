@@ -1,39 +1,76 @@
 @import "../../Assets/variables.scss";
 
 .lobster-component.listitem-component {
+
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: $paddingLHorizontal;
-    border-bottom: 1px solid black;
-    width: calc(100% - #{$paddingLHorizontalWidth} * 2 - 20px);
-    cursor: pointer;
-    position: relative;
-    height: $fieldHeight;
-    background-color: white;
-    transition: $transition;
+    flex-direction: column;
 
-    &.listitem-component-icon {
-        padding-left: calc(#{$paddingRightM} * 3.5);
-        width: calc(100% - #{$paddingRightM} * 3.5 - #{$paddingLHorizontalWidth} - 10px);
-    }
-
-    &:hover {
-        background-color: $neutralColor;
-    }
-
-    & > .listitem-icon {
-        height: 100%;
-        padding-right: $paddingRightM;
-        width: 20px;
-        position: absolute;
-        left: $paddingRightM;
-        top: 0;
-    }
-
-    & > .listitem-label {
+    & > .listsubitems-container {
+        display: flex;
+        flex-direction: column;
+        max-height: 0;
         overflow: hidden;
-        text-overflow: ellipsis;
+    }
+
+    & > .listsubitems-container-show {
+        max-height: unset;
+    }
+
+    & > .listitem-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: $paddingLHorizontal;
+        border-bottom: 1px solid black;
+        cursor: pointer;
+        position: relative;
+        height: $fieldHeight;
+        background-color: white;
+        transition: $transition;
+        padding-left: calc(#{$paddingRightM} * 3.5);
+        padding-right: calc(#{$paddingRightM} * 3.5);
+        width: calc(100% - #{$paddingRightM} * 7);
+
+        &.listitem-component-sublist {
+            & > .childrenbutton-component {
+                height: 100%;
+                padding-left: $paddingRightM;
+                width: 12px;
+                position: absolute;
+                padding-right: $paddingRightM;
+                right: 0;
+                top: 0;
+                transition: $transition;
+            }
+        }
+
+        &.listitem-component-sublist-show {
+            & > .childrenbutton-component {
+                transform: scale(-1, -1);
+            }
+        }
+
+        &:hover {
+            background-color: $neutralColor;
+        }
+
+        & > .listitem-icon {
+            height: 100%;
+            padding-right: $paddingRightM;
+            width: 20px;
+            position: absolute;
+            left: $paddingRightM;
+            top: 0;
+        }
+
+        & > .listitem-label {
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+            height: 100%;
+            white-space: nowrap;
+        }
     }
 }
