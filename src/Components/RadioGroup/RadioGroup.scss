@@ -1,0 +1,15 @@
+@import "../../Assets/variables.scss";
+
+.lobster-component.radiogroup-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: $marginXL;
+
+    & > .radio-wrapper > .radio-container {
+        &::after {
+            left: 3px;
+        }
+    }
+}

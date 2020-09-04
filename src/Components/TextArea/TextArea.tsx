@@ -5,7 +5,7 @@ import { DOMAttributes } from 'react';
 
 export interface TextAreaProps {
     value?: string,
-    onChange?: (value: string) => void,
+    onTextAreaChanged?: (value: string) => void,
     bordered?: boolean,
     disabled?: boolean,
     rows?: number,
@@ -14,13 +14,13 @@ export interface TextAreaProps {
     id?: string
 }
 
-const TextArea: React.FunctionComponent<TextAreaProps & DOMAttributes<Element>> = ({ id, className, value, onChange, bordered, disabled, cols, rows }) => {
+const TextArea: React.FunctionComponent<TextAreaProps & DOMAttributes<Element>> = ({ id, className, value, onTextAreaChanged, bordered, disabled, cols, rows, ...domAttributes }) => {
 
     const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         event.stopPropagation();
         event.preventDefault();
         const newValue: string = event.target.value;
-        onChange?.(newValue);
+        onTextAreaChanged?.(newValue);
     }
 
     const handleFocus = (event: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -41,7 +41,7 @@ const TextArea: React.FunctionComponent<TextAreaProps & DOMAttributes<Element>> 
 
     return (
         <div className={wrapperClassnames} id={id}>
-            <textarea value={value} onChange={handleOnChange} onFocus={handleFocus} rows={rows} cols={cols} />
+            <textarea value={value} onChange={handleOnChange} onFocus={handleFocus} rows={rows} cols={cols} {...domAttributes}/>
         </div>
     );
 }

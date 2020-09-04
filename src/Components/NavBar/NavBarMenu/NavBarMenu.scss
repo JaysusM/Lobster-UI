@@ -36,6 +36,15 @@
             z-index: 9000000;
             > .button-wrapper {
                 color: black;
+                & > .button-container > a {
+                    text-align: center;
+                    width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                &::after {
+                    background-color: black;
+                }
             }
         }
 

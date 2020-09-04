@@ -12,7 +12,8 @@ export enum TextInputType {
 export interface TextInputProps {
   label: string,
   value?: string,
-  onChange?: (value: string) => void,
+  onInputChanged?: (value: string) => void,
+  onInputBlur?: (value: string) => void,
   bordered?: boolean,
   placeholder?: string,
   disabled?: boolean,
@@ -23,7 +24,7 @@ export interface TextInputProps {
   type?: TextInputType
 }
 
-const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>> = ({ type = TextInputType.Text, id, className, label, errorMessage, success, placeholder, value, onChange, bordered, disabled }) => {
+const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>> = ({ type = TextInputType.Text, id, className, label, errorMessage, success, placeholder, value, onInputBlur, onInputChanged, bordered, disabled, ...domAttributes }) => {
 
   const inputRef: any = useRef();
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
@@ -40,7 +41,7 @@ const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>
     event.preventDefault();
     const newValue: string = event.target.value;
     setInputValue(newValue);
-    onChange?.(newValue);
+    onInputChanged?.(newValue);
   }
 
   const handleInputFocus = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -58,6 +59,7 @@ const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>
     event.preventDefault();
     if (!disabled) {
       setIsInputFocused(false);
+      onInputBlur?.(event.target.value);
     } else {
       removeFocusInInput();
     }
@@ -136,7 +138,7 @@ const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>
   }
 
   return (
-    <div className={wrapperClassnames} id={id}>
+    <div className={wrapperClassnames} id={id} {...domAttributes}>
       {label && <label onClick={handleLabelClick} className={labelClassnames}>{label}</label>}
       {errorMessage && <>
         <Icon icon="info-circle" className={errorIconClassnames} onMouseOver={handleInformationMouseOver} onMouseLeave={handleInformationMouseOut} />

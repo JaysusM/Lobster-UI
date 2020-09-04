@@ -8,11 +8,16 @@ export interface RadioProps {
     selected?: boolean,
     value?: string,
     label?: string,
-    onChange?: (value: string | null) => void
+    onRadioChanged?: (value: string | null) => void,
+    isRadioGroupComponent?: boolean
 }
 
-const Radio: React.FunctionComponent<RadioProps & React.DOMAttributes<Element>> = ({id, className, label, value, selected, onChange, ...domAttributes}) => {
+const Radio: React.FunctionComponent<RadioProps & React.DOMAttributes<Element>> = ({id, className, label, value, selected, onRadioChanged, isRadioGroupComponent, ...domAttributes}) => {
     const [isSelected, setIsSelected] = React.useState<boolean>(selected ?? false);
+
+    React.useEffect(() => {
+        setIsSelected(selected ?? false);
+    }, [selected]);
 
     const wrapperClassnames: string = classNames(
         "lobster-component",
@@ -31,12 +36,14 @@ const Radio: React.FunctionComponent<RadioProps & React.DOMAttributes<Element>> 
         event.stopPropagation();
         event.preventDefault();
         const isNewSelected: boolean = !isSelected;
-        onChange?.(isNewSelected ? value ?? null : null);
-        setIsSelected(isNewSelected);
+        if (isNewSelected || !isRadioGroupComponent) {
+            onRadioChanged?.(isNewSelected ? value ?? null : null);
+            setIsSelected(isNewSelected);
+        }
     }
 
   return (
-    <div className={wrapperClassnames}>
+    <div className={wrapperClassnames} id={id} {...domAttributes}>
         {label && <a>{label}</a>}
         <div className={containerClassnames} onClick={onRadioClicked}/>
     </div>

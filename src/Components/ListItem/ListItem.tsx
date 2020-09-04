@@ -44,21 +44,21 @@ const ListItem: React.FunctionComponent<ListItemProps & DOMAttributes<Element>> 
         </>
     }
 
-    const ChildrenButtonComponent = (): JSX.Element | undefined => {
-        const onChildrenButtonClick = (event: React.MouseEvent<SVGSVGElement>) => {
-            event.stopPropagation();
-            event.preventDefault();
-            setAreChildrenShown(!areChildrenShown);
-        }
+    const onChildrenButtonClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        event.stopPropagation();
+        event.preventDefault();
+        setAreChildrenShown(!areChildrenShown);
+    }
 
+    const ChildrenButtonComponent = (): JSX.Element | undefined => {
         return <>
-            {children && <Icon icon="chevron-down" className="childrenbutton-component" onClick={onChildrenButtonClick} />}
+            {children && <Icon icon="chevron-down" className="childrenbutton-component" />}
         </>
     }
 
     return (
         <div id={id} className={wrapperClassnames} {...domAttributes}>
-            <div className={containerClassnames}>
+            <div className={containerClassnames} onClick={(children) ? onChildrenButtonClick : undefined}>
                 {IconComponent()}
                 <a className="listitem-label">{label}</a>
                 {ChildrenButtonComponent()}

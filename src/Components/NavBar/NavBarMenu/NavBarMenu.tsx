@@ -12,7 +12,7 @@ export interface NavbBarMenuProps {
     color?: ButtonColor
 }
 
-const NavbBarMenu: React.FunctionComponent<NavbBarMenuProps & DOMAttributes<Element>> = ({ id, className, options, color = ButtonColor.White }) => {
+const NavbBarMenu: React.FunctionComponent<NavbBarMenuProps & DOMAttributes<Element>> = ({ id, className, options, color = ButtonColor.White, ...domAttributes }) => {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
 
@@ -35,7 +35,7 @@ const NavbBarMenu: React.FunctionComponent<NavbBarMenuProps & DOMAttributes<Elem
     }
 
     return (
-        <div className={wrapperClassnames}>
+        <div className={wrapperClassnames} {...domAttributes}>
             <Icon icon="bars" className="menu-icon" onClick={onMenuIconClick} />
             <div className={containerClassnames} id={id}>
                 {options.map((option: string, index: number) => <Button key={index} label={option} type={ButtonType.Simple} color={color} />)}
