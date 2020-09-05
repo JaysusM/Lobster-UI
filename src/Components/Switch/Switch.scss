@@ -1,0 +1,143 @@
+@import "../../Assets/variables.scss";
+
+.lobster-component.switch-component {
+    margin: $marginXL;
+    background-color: $neutralColor;
+    width: 45px;
+    height: 22px;
+    cursor: pointer;
+    transition: $transition;
+
+    & > .switch-selector {
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        margin-left: 2px;
+        background-color: white;
+        z-index: 1;
+        transition: $transition;
+        box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        position: relative;
+
+        & > .switch-selectedicon,
+        & > .switch-unselectedicon {
+            position: absolute;
+            top: 2.5px;
+            height: 12px;
+            width: 12px;
+            z-index: 99;
+            color: black;
+            transition: $transition;
+        }
+
+        & > .switch-unselectedicon {
+            left: 3px;
+        }
+
+        & > .switch-selectedicon {
+            right: -20px;
+        }
+    }
+
+    &.switch-rounded {
+        border-radius: 50px;
+
+        & > .switch-selector {
+            border-radius: 100%;
+        }
+    }
+
+    &.switch-squared {
+        border-radius: 3px;
+
+        & > .switch-selector {
+            border-radius: 3px;
+        }
+    }
+
+    &.switch-line {
+        background-color: transparent;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 9px;
+            z-index: 0;
+            border-radius: 50px;
+            background-color: $neutralColor;
+            width: 40px;
+            left: 2.5px;
+            height: 5px;
+        }
+
+        & > .switch-selector {
+            border-radius: 100%;
+            box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    &.switch-active:not(.switch-line) {
+        background-color: $mainColor;
+
+        &.switch-secondarycolor {
+            background-color: $secondaryColor;
+        }
+
+        &.switch-cancelcolor {
+            background-color: $cancelColor;
+        }
+
+        &.switch-successcolor {
+            background-color: $successColor;
+        }
+
+        & > .switch-selector {
+            margin-left: calc(100% - 2px - 18px);
+            box-shadow: -1px 1px 3px 0px rgba(0, 0, 0, 0.3);
+            & > .switch-unselectedicon {
+                left: -20px;
+            }
+
+            & > .switch-selectedicon {
+                right: 3px;
+            }
+        }
+    }
+
+    &.switch-active {
+        &::after {
+            background-color: $mainColor;
+        }
+
+        &.switch-secondarycolor {
+            &::after {
+                background-color: $secondaryColor;
+            }
+        }
+
+        &.switch-cancelcolor {
+            &::after {
+                background-color: $cancelColor;
+            }
+        }
+
+        &.switch-successcolor {
+            &::after {
+                background-color: $successColor;
+            }
+        }
+
+        & > .switch-selector {
+            margin-left: calc(100% - 2px - 18px);
+            & > .switch-unselectedicon {
+                left: -20px;
+            }
+
+            & > .switch-selectedicon {
+                right: 3px;
+            }
+        }
+    }
+}

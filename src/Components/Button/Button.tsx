@@ -1,7 +1,7 @@
 import * as React from 'react';
 import "./Button.scss";
 import classNames from "classnames";
-import Icon, {isIconIncludedInIconLibrary} from '../Icon/Icon';
+import Icon, {isIconIncludedInIconLibrary, IconName} from '../Icon/Icon';
 import { DOMAttributes } from 'react';
 
 export enum ButtonColor {
@@ -24,7 +24,7 @@ export enum IconAlignment {
 
 export interface ButtonProps {
   label: string,
-  icon?: any,
+  icon?: IconName | string,
   type?: ButtonType,
   color?: ButtonColor,
   bordered?: boolean,

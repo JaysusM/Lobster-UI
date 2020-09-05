@@ -9,7 +9,7 @@ export interface ListItemProps {
     id?: string,
     className?: string,
     label: string,
-    icon?: IconName,
+    icon?: IconName | string,
     children?: React.ReactNode
 }
 

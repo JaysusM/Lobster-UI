@@ -15,6 +15,7 @@ import { useState } from 'react';
 import ListItem from '../ListItem/ListItem';
 import Radio from '../RadioGroup/Radio/Radio';
 import RadioGroup from '../RadioGroup/RadioGroup';
+import Switch, { SwitchType, SwitchColor } from '../Switch/Switch';
 
 export const Demo = () => {
   const [showModalToast, setShowModalToast] = useState<boolean>(false);
@@ -78,28 +79,28 @@ export const Demo = () => {
       <h1>CheckBox Component</h1>
       <h5>Normal. TriState.</h5>
       <div className="row-container">
-        <Checkbox label={"Normal Checkbox:"} />
-        <Checkbox label={"TriState Checkbox:"} isTristate={true} />
+        <Checkbox label={"Normal Checkbox:"} onCheckboxChanged={(value) => console.log("Normal checkbox value: " + value)} />
+        <Checkbox label={"TriState Checkbox:"} isTristate={true} onCheckboxChanged={(value) => console.log("TriState checkbox value: " + value)} />
       </div>
       <h1>Radio Group - Radio Component</h1>
       <h5>Normal</h5>
       <div className="row-container">
         <div className="column-container">
-        <RadioGroup options={[
-          {
-            label: "First Option: ",
-            value: "Option1"
-          },
-          {
-            label: "Second Option: ",
-            value: "Option2"
-          },
-          {
-            label: "Third Option: ",
-            value: "Option3"
-          }
-        ]}/>
-        <Radio label={"Radio Button:"}/>
+          <RadioGroup options={[
+            {
+              label: "First Option: ",
+              value: "Option1"
+            },
+            {
+              label: "Second Option: ",
+              value: "Option2"
+            },
+            {
+              label: "Third Option: ",
+              value: "Option3"
+            }
+          ]} onRadioChanged={value => console.log("RadioGroup value: " + value)} />
+          <Radio label={"Radio Button:"} value="RadioDefault" onRadioChanged={value => console.log("Normal Radio value: " + value)} />
         </div>
       </div>
       <h1>Loader Component</h1>
@@ -118,7 +119,7 @@ export const Demo = () => {
       <h5>Blink Animation. Wave Animation</h5>
       <div className="row-container">
         {skeleton(SkeletonAnimation.Blink)}
-        <div style={{width: "50px"}} />
+        <div style={{ width: "50px" }} />
         {skeleton(SkeletonAnimation.Wave)}
       </div>
       <h1>BaseCard Component</h1>
@@ -168,13 +169,41 @@ export const Demo = () => {
         <div className="column-container">
           <ListItem label={"Pay with Amazon"} icon="amazon-pay" />
           <ListItem label={"Demo video"} icon="video">
-            <ListItem label={"Option 1"} icon="angellist"/>
+            <ListItem label={"Option 1"} icon="angellist" />
             <ListItem label={"Option 2"} icon="amilia">
-              <ListItem label={"Option 2.1"} icon="alarm-clock"/>
+              <ListItem label={"Option 2.1"} icon="alarm-clock" />
             </ListItem>
           </ListItem>
           <ListItem label={"React Components"} icon="react" />
-          <ListItem label={"Contact us"}/>
+          <ListItem label={"Contact us"} />
+        </div>
+      </div>
+      <h1>Switch Component</h1>
+      <h5>Rounded. Squared. Primary. Secondary. Cancel. Success</h5>
+      <div className="column-container">
+        <div className="row-container">
+          <Switch type={SwitchType.Rounded} />
+          <Switch type={SwitchType.Rounded} color={SwitchColor.Secondary} />
+          <Switch type={SwitchType.Rounded} color={SwitchColor.Cancel} />
+          <Switch type={SwitchType.Rounded} color={SwitchColor.Success} />
+        </div>
+        <div className="row-container">
+          <Switch type={SwitchType.Squared} />
+          <Switch type={SwitchType.Squared} color={SwitchColor.Secondary} />
+          <Switch type={SwitchType.Squared} color={SwitchColor.Cancel} />
+          <Switch type={SwitchType.Squared} color={SwitchColor.Success} />
+        </div>
+        <div className="row-container">
+          <Switch type={SwitchType.Line} />
+          <Switch type={SwitchType.Line} color={SwitchColor.Secondary} />
+          <Switch type={SwitchType.Line} color={SwitchColor.Cancel} />
+          <Switch type={SwitchType.Line} color={SwitchColor.Success} />
+        </div>
+        <div className="row-container">
+          <Switch type={SwitchType.Squared} unselectedIcon="far bell-slash" selectedIcon="far bell" />
+          <Switch type={SwitchType.Rounded} color={SwitchColor.Secondary} unselectedIcon="far moon" selectedIcon="far sun" />
+          <Switch type={SwitchType.Line} color={SwitchColor.Cancel} unselectedIcon="frog" selectedIcon="horse" />
+          <Switch type={SwitchType.Rounded} color={SwitchColor.Success} unselectedIcon="bomb" selectedIcon="cloud-meatball" />
         </div>
       </div>
     </div>

@@ -18,7 +18,7 @@ export interface ToastProps {
     title: string,
     subtitle: string,
     type: ToastType,
-    specialIcon?: IconName,
+    specialIcon?: IconName | string,
     isCancelable?: boolean,
     onCancel?: () => void
 }
@@ -45,7 +45,7 @@ const Toast: React.FunctionComponent<ToastProps & DOMAttributes<Element>> = ({id
         "toast-container"
     );
 
-    let toastIcon: IconName | undefined = specialIcon;
+    let toastIcon: IconName | string | undefined = specialIcon;
     if (!toastIcon) {
         switch (type) {
             case ToastType.Error:

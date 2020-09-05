@@ -6,7 +6,7 @@ export interface RadioProps {
     id?: string,
     className?: string,
     selected?: boolean,
-    value?: string,
+    value: string,
     label?: string,
     onRadioChanged?: (value: string | null) => void,
     isRadioGroupComponent?: boolean

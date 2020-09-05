@@ -13,13 +13,13 @@ export enum TriState {
 export interface CheckboxProps {
     label?: string,
     value?: boolean | TriState,
-    onChange?: (value: boolean | TriState) => void,
+    onCheckboxChanged?: (value: boolean | TriState) => void,
     className?: string,
     id?: string,
     isTristate?: boolean,
 }
 
-const Checkbox: React.FunctionComponent<CheckboxProps & DOMAttributes<Element>> = ({ label, id, className, isTristate, value, onChange, ...domAttributes }) => {
+const Checkbox: React.FunctionComponent<CheckboxProps & DOMAttributes<Element>> = ({ label, id, className, isTristate, value, onCheckboxChanged, ...domAttributes }) => {
 
     const initialState: boolean | TriState = (isTristate) ? (value ?? TriState.Unmarked) : (value ?? false);
 
@@ -42,10 +42,10 @@ const Checkbox: React.FunctionComponent<CheckboxProps & DOMAttributes<Element>> 
                     break;
             }
             setCurrentValue(nextValue);
-            onChange?.(nextValue);
+            onCheckboxChanged?.(nextValue);
         } else {
             setCurrentValue(!currentValue);
-            onChange?.(!currentValue);
+            onCheckboxChanged?.(!currentValue);
         }
     }
 

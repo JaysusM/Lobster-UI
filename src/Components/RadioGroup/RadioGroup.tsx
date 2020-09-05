@@ -8,7 +8,7 @@ export type RadioOptions = {
     value: string
 }
 
-export interface RadioProps {
+export interface RadioGroupProps {
     id?: string,
     className?: string,
     value?: string,
@@ -16,7 +16,7 @@ export interface RadioProps {
     options: Array<RadioOptions>
 }
 
-const RadioGroup: React.FunctionComponent<RadioProps & React.DOMAttributes<Element>> = ({id, className, value, onRadioChanged, options, ...domAttributes}) => {
+const RadioGroup: React.FunctionComponent<RadioGroupProps & React.DOMAttributes<Element>> = ({id, className, value, onRadioChanged, options, ...domAttributes}) => {
     const [currentValue, setCurrentValue] = React.useState<string | null>(value ?? null);
 
     if (!options.every((option) => options.filter((filterOption) => filterOption.value == option.value).length == 1)) {
