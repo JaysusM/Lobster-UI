@@ -1,26 +1,19 @@
 import * as React from 'react';
 import "./Button.scss";
 import classNames from "classnames";
-import Icon, {isIconIncludedInIconLibrary, IconName} from '../Icon/Icon';
+import Icon, { isIconIncludedInIconLibrary, IconName } from '../Icon/Icon';
 import { DOMAttributes } from 'react';
 
-export enum ButtonColor {
-  Primary,
-  Secondary,
-  Cancel,
-  Success,
-  White
-}
+export type ButtonColor =
+  "primary" |
+  "secondary" |
+  "cancel" |
+  "success" |
+  "white";
 
-export enum ButtonType {
-  Normal,
-  Simple
-}
+export type ButtonType = "normal" | "simple";
 
-export enum IconAlignment {
-  Start,
-  End
-}
+export type IconAlignment = "start" | "end";
 
 export interface ButtonProps {
   label: string,
@@ -37,11 +30,11 @@ export interface ButtonProps {
   iconAlignment?: IconAlignment
 }
 
-const Button: React.FunctionComponent<ButtonProps & DOMAttributes<Element>> = ({ className, id, label, icon, iconAlignment, onClick, color = ButtonColor.Primary, type = ButtonType.Normal, bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled, ...domAttributes }) => {
+const Button: React.FunctionComponent<ButtonProps & DOMAttributes<Element>> = ({ className, id, label, icon, iconAlignment, onClick, color = "primary", type = "normal", bordered, hoverUnderlineEffect = true, hoverMoveEffect = true, disabled, ...domAttributes }) => {
   // Check if icon exists in our library, if not, we reset its value
   // @ts-ignore
-  if(!isIconIncludedInIconLibrary(icon)) {
-      icon = undefined;
+  if (!isIconIncludedInIconLibrary(icon)) {
+    icon = undefined;
   }
 
   const wrapperClassNames: string = classNames(
@@ -49,12 +42,12 @@ const Button: React.FunctionComponent<ButtonProps & DOMAttributes<Element>> = ({
     "lobster-component",
     "button-wrapper",
     {
-      "primary-button": color === ButtonColor.Primary,
-      "secondary-button": color === ButtonColor.Secondary,
-      "cancel-button": color === ButtonColor.Cancel,
-      "success-button": color === ButtonColor.Success,
-      "white-button": color === ButtonColor.White,
-      "simple-button": type === ButtonType.Simple,
+      "primary-button": color === "primary",
+      "secondary-button": color === "secondary",
+      "cancel-button": color === "cancel",
+      "success-button": color === "success",
+      "white-button": color === "white",
+      "simple-button": type === "simple",
       "border-button": bordered,
       "underline-effect": hoverUnderlineEffect && !disabled,
       "move-effect": hoverMoveEffect && !disabled,
@@ -66,8 +59,8 @@ const Button: React.FunctionComponent<ButtonProps & DOMAttributes<Element>> = ({
   const containerClassNames: string = classNames(
     "button-container",
     {
-      "icon-start": icon && ((iconAlignment === IconAlignment.Start) || !iconAlignment),
-      "icon-end": icon && iconAlignment === IconAlignment.End
+      "icon-start": icon && ((iconAlignment === "start") || !iconAlignment),
+      "icon-end": icon && iconAlignment === "end"
     }
   )
 

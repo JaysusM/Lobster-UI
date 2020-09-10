@@ -1,5 +1,5 @@
 import React, { useEffect, useState, FunctionComponent, DOMAttributes } from "react";
-import Toast, { ToastType, ToastProps } from "./../Toast";
+import Toast, { ToastProps } from "./../Toast";
 import ReactDOM from "react-dom";
 import "./ModalToast.scss";
 

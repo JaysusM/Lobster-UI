@@ -5,12 +5,11 @@ import Icon from '../Icon/Icon';
 import { IconName } from '@fortawesome/fontawesome';
 import { DOMAttributes } from 'react';
 
-export enum ToastType {
-    Information,
-    Warning,
-    Success,
-    Error
-}
+export type ToastType =
+    "information" |
+    "warning" |
+    "success" |
+    "error";
 
 export interface ToastProps {
     id?: string,
@@ -33,10 +32,10 @@ const Toast: React.FunctionComponent<ToastProps & DOMAttributes<Element>> = ({id
         className,
         "lobster-component",
         "toast-component", {
-            "information-toast": type === ToastType.Information,
-            "warning-toast": type === ToastType.Warning,
-            "success-toast": type === ToastType.Success,
-            "error-toast": type === ToastType.Error,
+            "information-toast": type === "information",
+            "warning-toast": type === "warning",
+            "success-toast": type === "success",
+            "error-toast": type === "error",
             "cancelable-toast": isCancelable
         }
     );
@@ -48,16 +47,16 @@ const Toast: React.FunctionComponent<ToastProps & DOMAttributes<Element>> = ({id
     let toastIcon: IconName | string | undefined = specialIcon;
     if (!toastIcon) {
         switch (type) {
-            case ToastType.Error:
+            case "error":
                 toastIcon = "times-circle";
                 break;
-            case ToastType.Warning:
+            case "warning":
                 toastIcon = "exclamation-circle";
                 break;
-            case ToastType.Success:
+            case "success":
                 toastIcon = "check-circle";
                 break;
-            case ToastType.Information:
+            case "information":
             default:
                 toastIcon = "info-circle";
                 break;

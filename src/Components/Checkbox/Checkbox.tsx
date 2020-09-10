@@ -5,9 +5,9 @@ import { useState, DOMAttributes } from "react";
 import Icon from "../Icon/Icon";
 
 export enum TriState {
-    Unmarked,
-    Neutral,
-    Marked
+    Unmarked = -1,
+    Neutral = 0,
+    Marked = 1
 }
 
 export interface CheckboxProps {

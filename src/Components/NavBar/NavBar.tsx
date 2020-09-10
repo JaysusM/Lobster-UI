@@ -3,14 +3,12 @@ import classNames from 'classnames';
 import "./NavBar.scss";
 import { ReactNode, DOMAttributes } from 'react';
 
-export enum NavBarColor {
-    Primary,
-    Secondary
-}
+export type NavBarColor =
+    "primary" |
+    "secondary";
 
-export enum NavBarType {
-    Horizontal
-}
+export type NavBarType =
+    "horizontal";
 
 export interface NavBarProps {
     id?: string,
@@ -20,15 +18,15 @@ export interface NavBarProps {
     children?: ReactNode
 }
 
-const NavBar: React.FunctionComponent<NavBarProps & DOMAttributes<Element>> = ({ id, className, color = NavBarColor.Primary, type = NavBarType.Horizontal, children, ...domAttributes}) => {
+const NavBar: React.FunctionComponent<NavBarProps & DOMAttributes<Element>> = ({ id, className, color = "primary", type = "horizontal", children, ...domAttributes}) => {
 
     const navbarClassnames: string = classNames(
         className,
         "lobster-component",
         "navbar-component", {
-            "primary-navbar": color === NavBarColor.Primary,
-            "secondary-navbar": color === NavBarColor.Secondary,
-            "horizontal-navbar": type === NavBarType.Horizontal
+            "primary-navbar": color === "primary",
+            "secondary-navbar": color === "secondary",
+            "horizontal-navbar": type === "horizontal"
         }
     );
 

@@ -1,5 +1,4 @@
 import "./ListItem.scss";
-
 import * as React from 'react';
 import classNames from "classnames";
 import Icon, { isIconIncludedInIconLibrary, IconName } from "../Icon/Icon";

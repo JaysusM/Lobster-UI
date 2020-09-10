@@ -3,19 +3,17 @@ import classNames from 'classnames';
 import "./Loader.scss";
 import { DOMAttributes } from 'react';
 
-export enum LoaderColor {
-    Primary,
-    Secondary,
-    Cancel,
-    Success
-}
+export type LoaderColor =
+    "primary" |
+    "secondary" |
+    "cancel" |
+    "success";
 
-export enum LoaderType {
-    Circle,
-    TripleBall,
-    CustomImage,
-    ProgressLine
-}
+export type LoaderType =
+    "circle" | 
+    "triple-ball" | 
+    "custom-image" | 
+    "progress-line";
 
 export interface LoaderProps {
     id?: string,
@@ -25,49 +23,49 @@ export interface LoaderProps {
     imageUrl?: string
 }
 
-const Loader: React.FunctionComponent<LoaderProps & DOMAttributes<Element>> = ({id, type, imageUrl, className, color = LoaderColor.Primary, ...domAttributes}) => {
+const Loader: React.FunctionComponent<LoaderProps & DOMAttributes<Element>> = ({ id, type, imageUrl, className, color = "primary", ...domAttributes }) => {
 
-    if (type === LoaderType.CustomImage && !imageUrl) {
+    if (type === "custom-image" && !imageUrl) {
         throw new Error("ERROR. Lobster UI. Please provide an Image URL for CustomImage Loader");
     }
 
     const loaderClassnames: string = classNames(
         className,
-        "lobster-component", 
+        "lobster-component",
         "loader-component", {
-            "primary-color-loader": color === LoaderColor.Primary,
-            "secondary-color-loader": color === LoaderColor.Secondary,
-            "cancel-color-loader": color === LoaderColor.Cancel,
-            "success-color-loader": color === LoaderColor.Success,
-            "circle-loader": type === LoaderType.Circle,
-            "tripleball-loader": type === LoaderType.TripleBall,
-            "customimage-loader": type === LoaderType.CustomImage,
-            "progressline-loader": type === LoaderType.ProgressLine
-        });
+        "primary-color-loader": color === "primary",
+        "secondary-color-loader": color === "secondary",
+        "cancel-color-loader": color === "cancel",
+        "success-color-loader": color === "success",
+        "circle-loader": type === "circle",
+        "tripleball-loader": type === "triple-ball",
+        "customimage-loader": type === "custom-image",
+        "progressline-loader": type === "progress-line"
+    });
 
-const LoaderContent = (): JSX.Element | undefined => {
-    switch (type) {
-        case LoaderType.ProgressLine:
-        case LoaderType.Circle:
-            return undefined;
-        case LoaderType.TripleBall:
-            return <>
-                <div className="first-ball"/>
-                <div className="second-ball"/>
-                <div className="third-ball"/>
-            </>
-        case LoaderType.CustomImage:
-            return <img src={imageUrl} />
-        default:
-            return undefined;
+    const LoaderContent = (): JSX.Element | undefined => {
+        switch (type) {
+            case "progress-line":
+            case "circle":
+                return undefined;
+            case "triple-ball":
+                return <>
+                    <div className="first-ball" />
+                    <div className="second-ball" />
+                    <div className="third-ball" />
+                </>
+            case "custom-image":
+                return <img src={imageUrl} />
+            default:
+                return undefined;
+        }
     }
-}
 
-  return (
-    <div className={loaderClassnames} id={id} {...domAttributes}>
-        {LoaderContent()}
-    </div>
-  );
+    return (
+        <div className={loaderClassnames} id={id} {...domAttributes}>
+            {LoaderContent()}
+        </div>
+    );
 }
 
 export default Loader;

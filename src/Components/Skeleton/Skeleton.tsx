@@ -3,16 +3,14 @@ import classNames from 'classnames';
 import "./Skeleton.scss";
 import { DOMAttributes } from 'react';
 
-export enum SkeletonType {
-    Text,
-    Circular,
-    Custom
-}
+export type SkeletonType = 
+    "text" |
+    "circular" |
+    "custom";
 
-export enum SkeletonAnimation {
-    Blink,
-    Wave
-}
+export type SkeletonAnimation =
+    "blink" |
+    "wave";
 
 export interface SkeletonProps {
     id?: string,
@@ -23,9 +21,9 @@ export interface SkeletonProps {
     animation?: SkeletonAnimation
 }
 
-const Skeleton: React.FunctionComponent<SkeletonProps & DOMAttributes<Element>> = ({ id, className, type = SkeletonType.Text, width, height, animation = SkeletonAnimation.Blink, ...domAttributes }) => {
+const Skeleton: React.FunctionComponent<SkeletonProps & DOMAttributes<Element>> = ({ id, className, type = "text", width, height, animation = "blink", ...domAttributes }) => {
 
-    if ((!height || !width) && [SkeletonType.Custom, SkeletonType.Circular].includes(type)) {
+    if ((!height || !width) && ["custom", "circular"].includes(type)) {
         throw new Error("Custom and Circular Skeleton needs height and width attributes. Default values for height: fontSize, width: 100%");
     }
 
@@ -33,29 +31,29 @@ const Skeleton: React.FunctionComponent<SkeletonProps & DOMAttributes<Element>> 
         className,
         "lobster-component",
         "skeleton-component", {
-        "text-skeleton": type === SkeletonType.Text,
-        "custom-skeleton": type === SkeletonType.Custom,
-        "circular-skeleton": type === SkeletonType.Circular,
-        "blink-animation": animation === SkeletonAnimation.Blink,
-        "wave-animation": animation === SkeletonAnimation.Wave
+        "text-skeleton": type === "text",
+        "custom-skeleton": type === "custom",
+        "circular-skeleton": type === "circular",
+        "blink-animation": animation === "blink",
+        "wave-animation": animation === "wave"
     });
 
     let containerStyles: React.CSSProperties = {};
 
     switch (type) {
-        case SkeletonType.Circular:
+        case "circular":
             containerStyles = {
                 height: height + "px",
                 width: width + "px"
             };
             break;
-        case SkeletonType.Custom:
+        case "custom":
             containerStyles = {
                 height: height + "px",
                 width: width + "px"
             };
             break;
-        case SkeletonType.Text:
+        case "text":
             containerStyles = {
                 width: width + "px"
             };

@@ -15,20 +15,18 @@ export interface SwitchProps {
     onSwitchChanged?: (value: boolean) => void
 }
 
-export enum SwitchType {
-    Rounded,
-    Squared,
-    Line
-}
+export type SwitchType =
+    "rounded" | 
+    "squared" |
+    "line";
 
-export enum SwitchColor {
-    Primary,
-    Secondary,
-    Cancel,
-    Success
-}
+export type SwitchColor =
+    "primary" |
+    "secondary" |
+    "cancel" |
+    "success";
 
-const Switch: React.FunctionComponent<SwitchProps & React.DOMAttributes<Element>> = ({ id, className, value = false, type = SwitchType.Rounded, onSwitchChanged, color = SwitchColor.Primary, unselectedIcon, selectedIcon }) => {
+const Switch: React.FunctionComponent<SwitchProps & React.DOMAttributes<Element>> = ({ id, className, value = false, type = "rounded", onSwitchChanged, color = "primary", unselectedIcon, selectedIcon }) => {
 
     const [currentValue, setCurrentValue] = useState<boolean>(value);
 
@@ -41,13 +39,13 @@ const Switch: React.FunctionComponent<SwitchProps & React.DOMAttributes<Element>
         "lobster-component",
         "switch-component", {
             "switch-active": currentValue,
-            "switch-rounded": type === SwitchType.Rounded,
-            "switch-squared": type === SwitchType.Squared,
-            "switch-line": type === SwitchType.Line,
-            "switch-primarycolor": color === SwitchColor.Primary,
-            "switch-secondarycolor": color === SwitchColor.Secondary,
-            "switch-cancelcolor": color === SwitchColor.Cancel,
-            "switch-successcolor": color === SwitchColor.Success
+            "switch-rounded": type === "rounded",
+            "switch-squared": type === "squared",
+            "switch-line": type === "line",
+            "switch-primarycolor": color === "primary",
+            "switch-secondarycolor": color === "secondary",
+            "switch-cancelcolor": color === "cancel",
+            "switch-successcolor": color === "success"
         }
     );
 

@@ -4,10 +4,9 @@ import { useState, useRef, DOMAttributes } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 
-export enum TextInputType {
-  Password = "password",
-  Text = "text"
-}
+export type TextInputType =
+  "password" |
+  "text";
 
 export interface TextInputProps {
   label: string,
@@ -24,7 +23,7 @@ export interface TextInputProps {
   type?: TextInputType
 }
 
-const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>> = ({ type = TextInputType.Text, id, className, label, errorMessage, success, placeholder, value, onInputBlur, onInputChanged, bordered, disabled, ...domAttributes }) => {
+const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>> = ({ type = "text", id, className, label, errorMessage, success, placeholder, value, onInputBlur, onInputChanged, bordered, disabled, ...domAttributes }) => {
 
   const inputRef: any = useRef();
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
@@ -86,7 +85,7 @@ const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>
     "textinput-disabled": disabled,
     "textinput-error": errorMessage,
     "textinput-success": success && !errorMessage,
-    "textinput-password": type === TextInputType.Password
+    "textinput-password": type === "password"
   });
 
   const errorIconClassnames: string = classNames(
@@ -129,11 +128,11 @@ const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>
       setIsLockOpen(!isLockOpen);
     }
     const iconString: "lock-open" | "lock" = (isLockOpen) ? "lock-open" : "lock";
-    return type === TextInputType.Password && !errorMessage && <Icon icon={iconString} className={lockIconClassnames} onClick={handlePasswordIconClick} />
+    return type === "password" && !errorMessage && <Icon icon={iconString} className={lockIconClassnames} onClick={handlePasswordIconClick} />
   }
 
   const InputField = () => {
-    const fieldInputType: TextInputType = (type === TextInputType.Password && isLockOpen) ? TextInputType.Text : type;
+    const fieldInputType: TextInputType = (type === "password" && isLockOpen) ? "text" : type;
     return <input ref={inputRef} className={inputClassnames} type={fieldInputType} placeholder={placeholder} value={value} onChange={handleOnChange} onFocus={handleInputFocus} onBlur={handleInputFocusLose} />
   }
 

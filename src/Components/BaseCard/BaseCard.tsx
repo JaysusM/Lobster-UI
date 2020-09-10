@@ -3,10 +3,7 @@ import classNames from 'classnames';
 import "./BaseCard.scss";
 import { ReactNode, DOMAttributes } from 'react';
 
-export enum BaseCardType {
-  Light,
-  Dark
-}
+export type BaseCardType = "light" | "dark";
 
 export interface BaseCardProps {
     id?: string,
@@ -15,14 +12,14 @@ export interface BaseCardProps {
     type?: BaseCardType
 }
 
-const BaseCard: React.FunctionComponent<BaseCardProps & DOMAttributes<Element>> = ({id, className, children, type = BaseCardType.Light, ...domAttributes}) => {
+const BaseCard: React.FunctionComponent<BaseCardProps & DOMAttributes<Element>> = ({id, className, children, type = "light", ...domAttributes}) => {
   
     const containerClassnames: string = classNames(
       className,  
       "lobster-component",
       "basecard-component", {
-      "light-basecard": type === BaseCardType.Light,
-      "dark-basecard": type === BaseCardType.Dark
+      "light-basecard": type === "light",
+      "dark-basecard": type === "dark"
     });
   
     return (

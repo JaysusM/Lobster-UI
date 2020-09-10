@@ -1,35 +1,36 @@
 import * as React from 'react';
-import Button, { ButtonType, IconAlignment, ButtonColor } from '../Button/Button';
+import Button from '../Button/Button';
 import "./Demo.scss";
-import TextInput, { TextInputType } from '../TextInput/TextInput';
+import TextInput from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
 import Checkbox from '../Checkbox/Checkbox';
-import Loader, { LoaderColor, LoaderType } from '../Loader/Loader';
-import Skeleton, { SkeletonType, SkeletonAnimation } from '../Skeleton/Skeleton';
-import BaseCard, { BaseCardType } from '../BaseCard/BaseCard';
-import NavBar, { NavBarColor } from '../NavBar/NavBar';
+import Loader from '../Loader/Loader';
+import Skeleton, { SkeletonAnimation } from '../Skeleton/Skeleton';
+import "./Demo.scss";
+import BaseCard from '../BaseCard/BaseCard';
+import NavBar from '../NavBar/NavBar';
 import NavbBarMenu from '../NavBar/NavBarMenu/NavBarMenu';
-import Toast, { ToastType } from '../Toast/Toast';
+import Toast from '../Toast/Toast';
 import ModalToast from '../Toast/ModalToast/ModalToast';
 import { useState } from 'react';
 import ListItem from '../ListItem/ListItem';
 import Radio from '../RadioGroup/Radio/Radio';
 import RadioGroup from '../RadioGroup/RadioGroup';
-import Switch, { SwitchType, SwitchColor } from '../Switch/Switch';
+import Switch from '../Switch/Switch';
 
 export const Demo = () => {
   const [showModalToast, setShowModalToast] = useState<boolean>(false);
 
   const skeleton = (animation?: SkeletonAnimation): JSX.Element => <div className="column-container">
     <div className="row-container">
-      <Skeleton type={SkeletonType.Circular} animation={animation} height={50} width={50} />
+      <Skeleton type={"circular"} animation={animation} height={50} width={50} />
       <div style={{ width: "15px" }} />
       <div className="expanded-center">
-        <Skeleton type={SkeletonType.Text} animation={animation} width={200} />
+        <Skeleton type={"text"} animation={animation} width={200} />
       </div>
     </div>
     <br />
-    <Skeleton type={SkeletonType.Custom} animation={animation} width={265} height={200} />
+    <Skeleton type={"custom"} animation={animation} width={265} height={200} />
   </div>;
 
   return (
@@ -37,27 +38,27 @@ export const Demo = () => {
       <h1>Button Component</h1>
       <h3>Normal</h3>
       <div className="row-container">
-        <Button label={"Simple"} type={ButtonType.Simple} />
-        <Button label={"Primary"} color={ButtonColor.Primary} />
-        <Button label={"Secondary"} color={ButtonColor.Secondary} />
-        <Button label={"Cancel"} color={ButtonColor.Cancel} />
-        <Button label={"Success"} color={ButtonColor.Success} />
+        <Button label={"Simple"} type={"simple"} />
+        <Button label={"Primary"} color={"primary"} />
+        <Button label={"Secondary"} color={"secondary"} />
+        <Button label={"Cancel"} color={"cancel"} />
+        <Button label={"Success"} color={"success"} />
       </div>
       <h3>Bordered</h3>
       <div className="row-container">
-        <Button label={"BPrimary"} color={ButtonColor.Primary} bordered={true} />
-        <Button label={"BSecondary"} color={ButtonColor.Secondary} bordered={true} />
-        <Button label={"BCancel"} color={ButtonColor.Cancel} bordered={true} />
-        <Button label={"BSuccess"} color={ButtonColor.Success} bordered={true} />
+        <Button label={"BPrimary"} color={"primary"} bordered={true} />
+        <Button label={"BSecondary"} color={"secondary"} bordered={true} />
+        <Button label={"BCancel"} color={"cancel"} bordered={true} />
+        <Button label={"BSuccess"} color={"success"} bordered={true} />
       </div>
       <h3>Special</h3>
       <h5>With icon. Without movement effect. Without underline effect. Disabled</h5>
       <div className="row-container">
-        <Button icon="camera" label={"Icon"} color={ButtonColor.Primary} />
-        <Button icon="bomb" label={"Icon"} color={ButtonColor.Primary} iconAlignment={IconAlignment.End} />
-        <Button label={"No movement"} color={ButtonColor.Primary} hoverMoveEffect={false} />
-        <Button label={"No underline"} color={ButtonColor.Primary} hoverUnderlineEffect={false} />
-        <Button disabled={true} label={"Disabled"} color={ButtonColor.Primary} />
+        <Button icon="camera" label={"Icon"} color={"primary"} />
+        <Button icon="bomb" label={"Icon"} color={"primary"} iconAlignment={"end"} />
+        <Button label={"No movement"} color={"primary"} hoverMoveEffect={false} />
+        <Button label={"No underline"} color={"primary"} hoverUnderlineEffect={false} />
+        <Button disabled={true} label={"Disabled"} color={"primary"} />
       </div>
       <h1>Input Component</h1>
       <h5>Normal. Bordered. Error. Disabled. Success. Password</h5>
@@ -68,7 +69,7 @@ export const Demo = () => {
         <TextInput label={"Error"} bordered={true} errorMessage={"This is an error :("} />
         <TextInput label={"Disabled"} bordered={true} disabled={true} />
         <TextInput label={"Success"} success={true} />
-        <TextInput label={"Password"} type={TextInputType.Password} bordered={true} />
+        <TextInput label={"Password"} type={"password"} bordered={true} />
       </div>
       <h1>TextArea Component</h1>
       <h5>Normal. Bordered.</h5>
@@ -106,30 +107,30 @@ export const Demo = () => {
       <h1>Loader Component</h1>
       <h5>Circle. Triple Ball. Custom Image. Progress Line</h5>
       <div className="row-container">
-        <Loader type={LoaderType.Circle} />
-        <Loader color={LoaderColor.Primary} type={LoaderType.TripleBall} />
-        <Loader type={LoaderType.CustomImage} imageUrl={"https://i.imgur.com/NVeYmf3.png"} />
+        <Loader type={"circle"} />
+        <Loader color={"primary"} type={"triple-ball"} />
+        <Loader type={"custom-image"} imageUrl={"https://i.imgur.com/NVeYmf3.png"} />
         <br />
-        <Loader type={LoaderType.ProgressLine} />
+        <Loader type={"progress-line"} />
         <br />
-        <Loader type={LoaderType.ProgressLine} color={LoaderColor.Secondary} />
+        <Loader type={"progress-line"} color={"secondary"} />
       </div>
       <h1>Skeleton Component</h1>
       <h5>Circular. Text. Custom.</h5>
       <h5>Blink Animation. Wave Animation</h5>
       <div className="row-container">
-        {skeleton(SkeletonAnimation.Blink)}
+        {skeleton("blink")}
         <div style={{ width: "50px" }} />
-        {skeleton(SkeletonAnimation.Wave)}
+        {skeleton("wave")}
       </div>
       <h1>BaseCard Component</h1>
       <h5>Light. Dark.</h5>
       <div className="row-container">
-        <BaseCard type={BaseCardType.Light}>
+        <BaseCard type={"light"}>
           {skeleton()}
         </BaseCard>
         <div style={{ width: "15px" }} />
-        <BaseCard type={BaseCardType.Dark}>
+        <BaseCard type={"dark"}>
           {skeleton()}
         </BaseCard>
       </div>
@@ -141,28 +142,28 @@ export const Demo = () => {
           <h3>Lobster UI</h3>
           <NavbBarMenu options={["Home", "Books", "Help"]} />
         </NavBar>
-        <NavBar color={NavBarColor.Secondary}>
+        <NavBar color={"secondary"}>
           <h3>Lobster UI</h3>
-          <NavbBarMenu options={["Home", "Books", "Help"]} color={ButtonColor.Primary} />
+          <NavbBarMenu options={["Home", "Books", "Help"]} color={"primary"} />
         </NavBar>
       </div>
       <h1>Toast</h1>
       <h5>Information. Warning. Success. Error. Special Icon.</h5>
       <div className="column-container">
-        <Toast title="We are moving to other domain" subtitle="You can keep visiting us at google.com" type={ToastType.Information} />
+        <Toast title="We are moving to other domain" subtitle="You can keep visiting us at google.com" type={"information"} />
         <div style={{ height: "10px" }} />
-        <Toast title="Payment received" subtitle="We received the payment. Check your mail." type={ToastType.Success} />
+        <Toast title="Payment received" subtitle="We received the payment. Check your mail." type={"success"} />
         <div style={{ height: "10px" }} />
-        <Toast title="Account suspended" subtitle="Look like you're account is suspended. Contact our support team." type={ToastType.Warning} />
+        <Toast title="Account suspended" subtitle="Look like you're account is suspended. Contact our support team." type={"warning"} />
         <div style={{ height: "10px" }} />
-        <Toast title="Payment unsuccessful" subtitle="Try using another payment method, please." type={ToastType.Error} />
+        <Toast title="Payment unsuccessful" subtitle="Try using another payment method, please." type={"error"} />
         <div style={{ height: "10px" }} />
-        <Toast title="Special Icon" subtitle="This toast uses an special icon" type={ToastType.Error} specialIcon="react" />
+        <Toast title="Special Icon" subtitle="This toast uses an special icon" type={"error"} specialIcon="react" />
       </div>
       <h1>Modal Toast</h1>
       <div className="row-container">
-        <Button onClick={() => setShowModalToast(true)} type={ButtonType.Normal} label="Show modal" />
-        {showModalToast && <ModalToast title="Modal Toast Notification" subtitle="This is a modal toast element, it will disappear in a few seconds or when cancel button is pressed" type={ToastType.Success} duration={5000} onDispose={() => setShowModalToast(false)} />}
+        <Button onClick={() => setShowModalToast(true)} type={"normal"} label="Show modal" />
+        {showModalToast && <ModalToast title="Modal Toast Notification" subtitle="This is a modal toast element, it will disappear in a few seconds or when cancel button is pressed" type={"success"} duration={5000} onDispose={() => setShowModalToast(false)} />}
       </div>
       <h1>List Item</h1>
       <div className="row-container">
@@ -182,28 +183,28 @@ export const Demo = () => {
       <h5>Rounded. Squared. Primary. Secondary. Cancel. Success</h5>
       <div className="column-container">
         <div className="row-container">
-          <Switch type={SwitchType.Rounded} />
-          <Switch type={SwitchType.Rounded} color={SwitchColor.Secondary} />
-          <Switch type={SwitchType.Rounded} color={SwitchColor.Cancel} />
-          <Switch type={SwitchType.Rounded} color={SwitchColor.Success} />
+          <Switch type={"rounded"} />
+          <Switch type={"rounded"} color={"secondary"} />
+          <Switch type={"rounded"} color={"cancel"} />
+          <Switch type={"rounded"} color={"success"} />
         </div>
         <div className="row-container">
-          <Switch type={SwitchType.Squared} />
-          <Switch type={SwitchType.Squared} color={SwitchColor.Secondary} />
-          <Switch type={SwitchType.Squared} color={SwitchColor.Cancel} />
-          <Switch type={SwitchType.Squared} color={SwitchColor.Success} />
+          <Switch type={"squared"} />
+          <Switch type={"squared"} color={"secondary"} />
+          <Switch type={"squared"} color={"cancel"} />
+          <Switch type={"squared"} color={"success"} />
         </div>
         <div className="row-container">
-          <Switch type={SwitchType.Line} />
-          <Switch type={SwitchType.Line} color={SwitchColor.Secondary} />
-          <Switch type={SwitchType.Line} color={SwitchColor.Cancel} />
-          <Switch type={SwitchType.Line} color={SwitchColor.Success} />
+          <Switch type={"line"} />
+          <Switch type={"line"} color={"secondary"} />
+          <Switch type={"line"} color={"cancel"} />
+          <Switch type={"line"} color={"success"} />
         </div>
         <div className="row-container">
-          <Switch type={SwitchType.Squared} unselectedIcon="far bell-slash" selectedIcon="far bell" />
-          <Switch type={SwitchType.Rounded} color={SwitchColor.Secondary} unselectedIcon="far moon" selectedIcon="far sun" />
-          <Switch type={SwitchType.Line} color={SwitchColor.Cancel} unselectedIcon="frog" selectedIcon="horse" />
-          <Switch type={SwitchType.Rounded} color={SwitchColor.Success} unselectedIcon="bomb" selectedIcon="cloud-meatball" />
+          <Switch type={"squared"} unselectedIcon="far bell-slash" selectedIcon="far bell" />
+          <Switch type={"rounded"} color={"secondary"} unselectedIcon="far moon" selectedIcon="far sun" />
+          <Switch type={"line"} color={"cancel"} unselectedIcon="frog" selectedIcon="horse" />
+          <Switch type={"rounded"} color={"success"} unselectedIcon="bomb" selectedIcon="cloud-meatball" />
         </div>
       </div>
     </div>
