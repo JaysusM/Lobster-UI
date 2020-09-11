@@ -11,6 +11,7 @@ if (!document.getElementById('lobster-ui-stylesheet')) {
 export * from "./Components/BaseCard/BaseCard";
 export * from "./Components/Button/Button";
 export * from "./Components/Checkbox/Checkbox";
+export * from "./Components/Chip/Chip";
 export * from "./Components/Icon/Icon";
 export * from "./Components/Loader/Loader";
 export * from "./Components/NavBar/NavBar";
@@ -27,6 +28,7 @@ export * from "./Components/Toast/ModalToast/ModalToast";
 export {default as BaseCard} from "./Components/BaseCard/BaseCard";
 export {default as Button} from "./Components/Button/Button";
 export {default as Checkbox} from "./Components/Checkbox/Checkbox";
+export {default as Chip} from "./Components/Chip/Chip";
 export {default as Icon} from "./Components/Icon/Icon";
 export {default as Loader} from "./Components/Loader/Loader";
 export {default as NavBar} from "./Components/NavBar/NavBar";

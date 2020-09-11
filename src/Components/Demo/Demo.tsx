@@ -17,6 +17,7 @@ import ListItem from '../ListItem/ListItem';
 import Radio from '../RadioGroup/Radio/Radio';
 import RadioGroup from '../RadioGroup/RadioGroup';
 import Switch from '../Switch/Switch';
+import Chip from '../Chip/Chip';
 
 export const Demo = () => {
   const [showModalToast, setShowModalToast] = useState<boolean>(false);
@@ -205,6 +206,38 @@ export const Demo = () => {
           <Switch type={"rounded"} color={"secondary"} unselectedIcon="far moon" selectedIcon="far sun" />
           <Switch type={"line"} color={"cancel"} unselectedIcon="frog" selectedIcon="horse" />
           <Switch type={"rounded"} color={"success"} unselectedIcon="bomb" selectedIcon="cloud-meatball" />
+        </div>
+      </div>
+      <h1>Chip Component</h1>
+      <div className="column-container">
+        <div className="row-container">
+          <Chip label="React" color="primary"/>
+          <div style={{width: "15px"}} />
+          <Chip label="React" color="secondary"/>
+          <div style={{width: "15px"}} />
+          <Chip label="React" color="cancel"/>
+          <div style={{width: "15px"}} />
+          <Chip label="React" color="success"/>
+        </div>
+        <div style={{height: "15px"}} />
+        <div className="row-container">
+          <Chip label="React" color="primary" bordered={true}/>
+          <div style={{width: "15px"}} />
+          <Chip label="React" color="secondary" bordered={true}/>
+          <div style={{width: "15px"}} />
+          <Chip label="React" color="cancel" bordered={true}/>
+          <div style={{width: "15px"}} />
+          <Chip label="React" color="success" bordered={true}/>
+        </div>
+        <div style={{height: "15px"}} />
+        <div className="row-container">
+          <Chip label="React" color="primary" icon="react" bordered={true}/>
+          <div style={{width: "15px"}} />
+          <Chip label="React" color="secondary" icon="basketball-ball" bordered={true}/>
+          <div style={{width: "15px"}} />
+          <Chip label="React" color="cancel" icon="baseball-ball" bordered={true}/>
+          <div style={{width: "15px"}} />
+          <Chip label="React" color="success" icon="bolt" bordered={true}/>
         </div>
       </div>
     </div>

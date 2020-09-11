@@ -1,0 +1,60 @@
+@import "../../Assets/variables.scss";
+
+.lobster-component.chip-component {
+    $chipBorderRadius: 20px;
+
+    display: flex;
+    flex-direction: row;
+    padding: 4px 12px;
+    border: 2px solid $mainColor;
+    background-color: $mainColor;
+    border-radius: $chipBorderRadius;
+    color: white;
+    width: auto;
+    width: fit-content;
+    position: relative;
+
+    & > .chip-icon > svg {
+        padding-right: 10px;
+    }
+
+    &.secondary-chip {
+        border: 2px solid $secondaryColor;
+        background-color: $secondaryColor;
+        color: black;
+    }
+
+    &.cancel-chip {
+        border: 2px solid $cancelColor;
+        background-color: $cancelColor;
+        color: white;
+    }
+
+    &.success-chip {
+        border: 2px solid $successColor;
+        background-color: $successColor;
+        color: white;
+    }
+    
+    &.bordered-chip {
+        &.primary-chip {
+            background-color: $mainColorSoft;
+            color: $mainColor;
+        }
+
+        &.secondary-chip {
+            background-color: $secondaryColorSoft;
+            color: $secondaryColor;
+        }
+    
+        &.cancel-chip {
+            background-color: $cancelColorSoft;
+            color: $cancelColor;
+        }
+    
+        &.success-chip {
+            background-color: $successColorSoft;
+            color: $successColor;
+        }
+    }
+}
