@@ -1,19 +1,20 @@
 {
-  "name": "@jaysusm/lobster-ui",
+  "name": "lobster-ui",
   "displayName": "Lobster UI",
-  "version": "0.0.10",
+  "version": "0.0.2",
   "description": "A simple awesome React's components library",
   "main": "build/index.js",
   "module": "build/index.es.js",
   "jsnext:main": "build/index.es.js",
-  "types": "build/index.d.ts",
+  "types": "src/main.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build:js": "rollup -c",
     "lint": "standard",
     "format": "prettier-standard --format",
     "start": "webpack-dev-server",
     "build:webpack": "webpack",
-    "build:types": "tsc --emitDeclarationOnly --declarationDir=build/"
+    "build:types": "tsc --emitDeclarationOnly --declaration",
+    "build:prod": "npm run build:types && npm run build:js"
   },
   "dependencies": {
     "@fortawesome/fontawesome": "^1.1.8",
