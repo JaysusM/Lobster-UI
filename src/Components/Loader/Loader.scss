@@ -45,14 +45,23 @@ $loaderMargin: 10px;
 
         &.secondary-color-loader {
             border-top: 2px solid $secondaryColor;
+            &::after {
+                border-top: 2px solid $secondaryColor;
+            }
         }
 
         &.cancel-color-loader {
             border-top: 2px solid $cancelColor;
+            &::after {
+                border-top: 2px solid $cancelColor;
+            }
         }
 
         &.success-color-loader {
             border-top: 2px solid $successColor;
+            &::after {
+                border-top: 2px solid $successColor;
+            }
         }
     }
 

@@ -108,7 +108,7 @@ export const Demo = () => {
       <h1>Loader Component</h1>
       <h5>Circle. Triple Ball. Custom Image. Progress Line</h5>
       <div className="row-container">
-        <Loader type={"circle"} />
+        <Loader type={"circle"} color="secondary" />
         <Loader color={"primary"} type={"triple-ball"} />
         <Loader type={"custom-image"} imageUrl={"https://i.imgur.com/NVeYmf3.png"} />
         <br />
