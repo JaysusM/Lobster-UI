@@ -150,9 +150,9 @@
         cursor: not-allowed;
 
         &:not(.border-button) {
-            color: $disabledTextColor;
-            background-color: $disabledColor;
-            border: 2px solid $disabledColor;
+            color: $disabledTextColor !important;
+            background-color: $disabledColor !important;
+            border: 2px solid $disabledColor !important;
         }
 
         &.border-button {

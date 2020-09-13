@@ -1,7 +1,7 @@
 {
   "name": "lobster-ui",
   "displayName": "Lobster UI",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "A simple awesome React's components library",
   "main": "build/index.js",
   "module": "build/index.es.js",
@@ -23,10 +23,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-regular-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/react-fontawesome": "^0.1.11",
-    "@types/classnames": "^2.2.10",
-    "classnames": "^2.2.6",
-    "node-sass": "^4.14.1",
+    "@fortawesome/react-fontawesome": "^0.1.11"
+  },
+  "peerDependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -46,6 +45,9 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.1",
+    "@types/classnames": "^2.2.10",
+    "classnames": "^2.2.6",
+    "node-sass": "^4.14.1",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "@rollup/plugin-commonjs": "^15.0.0",
