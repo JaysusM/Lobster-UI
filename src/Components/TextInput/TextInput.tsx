@@ -31,6 +31,12 @@ const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>
   const [inputValue, setInputValue] = useState<string | undefined>(value);
   const [isLockOpen, setIsLockOpen] = useState<boolean>(false);
 
+  React.useEffect(() => {
+    if (value != inputValue) {
+      setInputValue(value);
+    }
+  }, [value]);
+
   const removeFocusInInput = () => {
     inputRef?.current?.blur();
   }

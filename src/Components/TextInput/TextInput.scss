@@ -51,7 +51,6 @@
         transition: $transition;
         cursor: text;
         max-width: calc(100% - 40px);
-        max-height: $fontSizeM;
         overflow: hidden;
         text-overflow: ellipsis;
         word-break: break-all;
@@ -132,13 +131,13 @@
 
     &.textinput-disabled {
         & > input {
-            background-color: $neutralColor;
+            background-color: $neutralColor !important;
             cursor: not-allowed;
         }
 
         & > .textinput-label {
             cursor: not-allowed;
-            color: $disabledColor;
+            color: $disabledColor !important;
         }
     }
 
@@ -163,6 +162,7 @@
         right: 6px;
         border-radius: 5px;
         top: 11px;
+        height: 15px;
         z-index: 1;
         padding: 13.5px;
         background-color: $neutralColor;
@@ -202,7 +202,7 @@
     }
 
     & > input {
-        background-color: initial;
+        background-color: white;
         border: 1px solid $neutralColor;
         padding: $paddingSWithoutBorder;
         width: $fieldWidth;

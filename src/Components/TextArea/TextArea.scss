@@ -17,6 +17,7 @@
         font-size: $fontSizeM;
         min-height: #{$fieldHeight + 4px};
         transition: $transition;
+        transition-property: border, background-color, color;
         border: 1px solid $neutralColor;
 
         &:focus {
@@ -33,7 +34,8 @@
 
     &.textarea-disabled {
         & > textarea {
-            background-color: $neutralColor;
+            background-color: $neutralColor !important;
+            color: $disabledColor !important;
             cursor: not-allowed;
             resize: none;
         }

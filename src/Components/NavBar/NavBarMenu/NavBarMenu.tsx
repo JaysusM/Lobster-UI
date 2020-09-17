@@ -9,10 +9,11 @@ export interface NavbBarMenuProps {
     id?: string,
     className?: string,
     options: Array<string>,
-    color?: ButtonColor
+    color?: ButtonColor,
+    onOptionClicked?: (value: string) => void
 }
 
-const NavbBarMenu: React.FunctionComponent<NavbBarMenuProps & DOMAttributes<Element>> = ({ id, className, options, color = "white", ...domAttributes }) => {
+const NavbBarMenu: React.FunctionComponent<NavbBarMenuProps & DOMAttributes<Element>> = ({ id, className, options, color = "white", onOptionClicked, ...domAttributes }) => {
 
     const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
 
@@ -38,7 +39,7 @@ const NavbBarMenu: React.FunctionComponent<NavbBarMenuProps & DOMAttributes<Elem
         <div className={wrapperClassnames} {...domAttributes}>
             <Icon icon="bars" className="menu-icon" onClick={onMenuIconClick} />
             <div className={containerClassnames} id={id}>
-                {options.map((option: string, index: number) => <Button key={index} label={option} type={"simple"} color={color} />)}
+                {options.map((option: string, index: number) => <Button key={index} label={option} type={"simple"} color={color} onClick={() => onOptionClicked?.(option)}/>)}
             </div>
         </div>
     );

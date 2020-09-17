@@ -4,6 +4,7 @@ import { DOMAttributes } from 'react';
 export interface TextAreaProps {
     value?: string;
     onTextAreaChanged?: (value: string) => void;
+    onTextAreaBlur?: (value: string) => void;
     bordered?: boolean;
     disabled?: boolean;
     rows?: number;

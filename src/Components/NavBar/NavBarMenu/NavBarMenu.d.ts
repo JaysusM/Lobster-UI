@@ -7,6 +7,7 @@ export interface NavbBarMenuProps {
     className?: string;
     options: Array<string>;
     color?: ButtonColor;
+    onOptionClicked?: (value: string) => void;
 }
 declare const NavbBarMenu: React.FunctionComponent<NavbBarMenuProps & DOMAttributes<Element>>;
 export default NavbBarMenu;

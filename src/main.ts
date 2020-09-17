@@ -4,7 +4,7 @@ if (!document.getElementById('lobster-ui-stylesheet')) {
     link.rel  = 'stylesheet';
     link.type = 'text/css';
     link.id = 'lobster-ui-stylesheet';
-    link.href = 'https://unpkg.com/lobster-ui/build/index.css';
+    link.href = 'https://unpkg.com/lobster-ui@latest/build/index.css';
     head.appendChild(link);
 }
 
