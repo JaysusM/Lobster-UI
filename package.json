@@ -1,7 +1,7 @@
 {
   "name": "lobster-ui",
   "displayName": "Lobster UI",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A simple awesome React's components library",
   "main": "build/index.js",
   "module": "build/index.es.js",

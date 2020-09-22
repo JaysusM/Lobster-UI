@@ -1,8 +1,8 @@
 import * as React from 'react';
-import "./TextInput.scss";
+import "./inputfield.scss";
 import { DOMAttributes } from 'react';
-export declare type TextInputType = "password" | "text";
-export interface TextInputProps {
+export declare type InputFieldType = "password" | "date" | "text";
+export interface InputFieldProps {
     label: string;
     value?: string;
     onInputChanged?: (value: string) => void;
@@ -14,7 +14,7 @@ export interface TextInputProps {
     id?: string;
     errorMessage?: string;
     success?: boolean;
-    type?: TextInputType;
+    type?: InputFieldType;
 }
-declare const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>>;
-export default TextInput;
+declare const InputField: React.FunctionComponent<InputFieldProps & DOMAttributes<Element>>;
+export default InputField;

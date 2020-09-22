@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Button from '../Button/Button';
 import "./Demo.scss";
-import TextInput from '../TextInput/TextInput';
 import TextArea from '../TextArea/TextArea';
 import Checkbox from '../Checkbox/Checkbox';
 import Loader from '../Loader/Loader';
@@ -18,6 +17,7 @@ import Radio from '../RadioGroup/Radio/Radio';
 import RadioGroup from '../RadioGroup/RadioGroup';
 import Switch from '../Switch/Switch';
 import Chip from '../Chip/Chip';
+import InputField from '../InputField/InputField';
 
 export const Demo = () => {
   const [showModalToast, setShowModalToast] = useState<boolean>(false);
@@ -62,15 +62,17 @@ export const Demo = () => {
         <Button disabled={true} label={"Disabled"} color={"primary"} />
       </div>
       <h1>Input Component</h1>
-      <h5>Normal. Bordered. Error. Disabled. Success. Password</h5>
+      <h5>Normal. Bordered. Error. Disabled. Success. Password. Date</h5>
       <div className="row-container">
-        <TextInput label={"First name"} placeholder={"This is a placeholder"} />
-        <TextInput label={"Last name"} bordered={true} placeholder={"This is a placeholder"} />
-        <TextInput label={"Error"} errorMessage={"This is not an error :)"} />
-        <TextInput label={"Error"} bordered={true} errorMessage={"This is an error :("} />
-        <TextInput label={"Disabled"} bordered={true} disabled={true} />
-        <TextInput label={"Success"} success={true} />
-        <TextInput label={"Password"} type={"password"} bordered={true} />
+        <InputField label={"First name"} placeholder={"This is a placeholder"} />
+        <InputField label={"Last name"} bordered={true} placeholder={"This is a placeholder"} />
+        <InputField label={"Error"} errorMessage={"This is not an error :)"} />
+        <InputField label={"Error"} bordered={true} errorMessage={"This is an error :("} />
+        <InputField label={"Disabled"} bordered={true} disabled={true} />
+        <InputField label={"Success"} success={true} />
+        <InputField label={"Password"} type={"password"} bordered={true} />
+        <InputField label={"Date"} type={"date"} bordered={true} />
+        <InputField label={"Date"} type={"date"} bordered={false} />
       </div>
       <h1>TextArea Component</h1>
       <h5>Normal. Bordered.</h5>

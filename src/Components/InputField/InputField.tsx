@@ -1,14 +1,15 @@
 import * as React from 'react';
-import "./TextInput.scss";
+import "./inputfield.scss";
 import { useState, useRef, DOMAttributes } from 'react';
 import classNames from 'classnames';
 import Icon from '../Icon/Icon';
 
-export type TextInputType =
+export type InputFieldType =
   "password" |
+  "date" |
   "text";
 
-export interface TextInputProps {
+export interface InputFieldProps {
   label: string,
   value?: string,
   onInputChanged?: (value: string) => void,
@@ -20,10 +21,10 @@ export interface TextInputProps {
   id?: string,
   errorMessage?: string,
   success?: boolean,
-  type?: TextInputType
+  type?: InputFieldType
 }
 
-const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>> = ({ type = "text", id, className, label, errorMessage, success, placeholder, value, onInputBlur, onInputChanged, bordered, disabled, ...domAttributes }) => {
+const InputField: React.FunctionComponent<InputFieldProps & DOMAttributes<Element>> = ({ type = "text", id, className, label, errorMessage, success, placeholder, value, onInputBlur, onInputChanged, bordered, disabled, ...domAttributes }) => {
 
   const inputRef: any = useRef();
   const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
@@ -70,28 +71,28 @@ const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>
     }
   }
 
-  const labelClassnames: string = classNames("textinput-label", {
-    "textinput-label-focus": isInputFocused,
-    "textinput-label-active": isInputFocused || (inputValue && inputValue.length > 0)
+  const labelClassnames: string = classNames("inputfield-label", {
+    "inputfield-label-focus": isInputFocused,
+    "inputfield-label-active": isInputFocused || (inputValue && inputValue.length > 0) || type === 'date'
   });
 
-  const errorTextClassnames: string = classNames("textinput-errortext", {
-    "textinput-errortext-show": isErrorInformationHovered
+  const errorTextClassnames: string = classNames("inputfield-errortext", {
+    "inputfield-errortext-show": isErrorInformationHovered
   });
 
   const inputClassnames: string = classNames({
-    "textinput-filled": (inputValue && inputValue.length > 0)
+    "inputfield-filled": (inputValue && inputValue.length > 0) || type === "date"
   });
 
   const wrapperClassnames: string = classNames(
     className,
     "lobster-component",
-    "textinput-wrapper", {
-    "textinput-wrapper-bordered": bordered,
-    "textinput-disabled": disabled,
-    "textinput-error": errorMessage,
-    "textinput-success": success && !errorMessage,
-    "textinput-password": type === "password"
+    "inputfield-wrapper", {
+    "inputfield-wrapper-bordered": bordered,
+    "inputfield-disabled": disabled,
+    "inputfield-error": errorMessage,
+    "inputfield-success": success && !errorMessage,
+    "inputfield-password": type === "password"
   });
 
   const errorIconClassnames: string = classNames(
@@ -138,7 +139,7 @@ const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>
   }
 
   const InputField = () => {
-    const fieldInputType: TextInputType = (type === "password" && isLockOpen) ? "text" : type;
+    const fieldInputType: InputFieldType = (type === "password" && isLockOpen) ? "text" : type;
     return <input ref={inputRef} className={inputClassnames} type={fieldInputType} placeholder={placeholder} value={value} onChange={handleOnChange} onFocus={handleInputFocus} onBlur={handleInputFocusLose} />
   }
 
@@ -156,4 +157,4 @@ const TextInput: React.FunctionComponent<TextInputProps & DOMAttributes<Element>
   );
 }
 
-export default TextInput;
+export default InputField;

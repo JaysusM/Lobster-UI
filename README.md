@@ -5,8 +5,8 @@
 
 ## What is?
 
-Lobster UI is a simple React's Component Library that will allow people to create apps in a easier way. <br/>
-I will be updating the Components and fixing bugs every time I have free time. It's a long time project.
+Lobster UI is a simple React's Component Library that will allow people to create apps with premade components. <br/>
+I will be updating and adding the Components and fixing bugs whenever I have free time. It's a long time project.
 
 ## Storybook
 I created a Documentation tool using [Storybook](https://storybook.js.org/) that shows how the components are used and how they look like. You can check it out here: https://jaysusm.github.io/Lobster-UI-Storybook/.
