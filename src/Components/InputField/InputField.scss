@@ -90,9 +90,10 @@
         border: 1px solid $neutralColor;
         max-width: $fieldWidth;
         width: $fieldWidth;
+        font-family: $fontFamily;
 
         &::placeholder {
-            visibility: hidden;
+            color: transparent;
             transition: 100ms all;
         }
 
@@ -110,7 +111,7 @@
             background-color: white;
 
             &::placeholder {
-                visibility: visible;
+                color: black;
             }
         }
     }

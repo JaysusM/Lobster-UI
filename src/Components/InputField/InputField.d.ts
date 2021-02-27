@@ -1,5 +1,5 @@
 import * as React from 'react';
-import "./inputfield.scss";
+import "./InputField.scss";
 import { DOMAttributes } from 'react';
 export declare type InputFieldType = "password" | "date" | "text";
 export interface InputFieldProps {

@@ -1,8 +1,10 @@
 @import "./colors";
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
+$fontFamily: "Nunito", sans-serif;
+
 .lobster-component {
-    font-family: "Nunito", sans-serif;
+    font-family: $fontFamily;
 }
 
 $borderRadius: 5px;
